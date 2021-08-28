@@ -107,8 +107,11 @@
                 console.log("Data: " + i);
                 console.log(data['photos'][i]['img_src'])
                 var aCard = card.replace("{{img_src}}", data['photos'][i]['img_src']);
-                var div = document.getElementById('gallery-container');
-                div.appendChild(aCard);
+                var parentDiv = document.getElementById('gallery-container');
+                var div = document.createElement('div');
+                div.innerHTML = aCard;
+
+                parentDiv.appendChild(div);
             }
             console.log("Completed");
     
