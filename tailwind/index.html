@@ -86,6 +86,8 @@
         var requestedDateField = document.getElementById('requestedDate');
         var requestedDate = new Date().toISOString().slice(0, -14);
         requestedDateField.value = requestedDate;
+
+        fetchPhotos();
     </script>
   </body>
 </html>

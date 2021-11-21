@@ -67,8 +67,9 @@ function fetchPhotos(){
           }
           console.log("Completed");
         } else {
-          console.log("Http issue while talking to NASA api, status is ", this.status)
-        }
+            console.log("Http issue while talking to NASA api, status is ", this.status)
+            bodyHeaderDiv.innerHTML = "Apologies, Free api call limit reached, NASA api with public key only provides 500 requests a day, please try tomorrow, sorry for inconvenience";
+       }
     };
     xhttp.open("GET", nasaApiUrl, true);
     xhttp.send();
