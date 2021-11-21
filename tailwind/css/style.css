@@ -1,0 +1,6 @@
+#headerLink {
+  font-size: 72px;
+  background: -webkit-linear-gradient(90deg, #5a2017 0%, #5a2087 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
