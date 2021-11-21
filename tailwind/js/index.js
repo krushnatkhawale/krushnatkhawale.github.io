@@ -33,3 +33,43 @@ var card = '<div class="min-h-screen bg-gray-100 flex items-center justify-cente
                 '</div>'+
                 '</div>'+
             '</div>';
+
+function fetchPhotos(){
+    var requestedDateField = document.getElementById('requestedDate');
+    var requestedDate = requestedDateField.value;
+
+    console.log(requestedDate);
+
+    var bodyHeaderDiv = document.getElementById('bodyHeader');
+
+    var nasaApiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+ requestedDate +"&api_key=DEMO_KEY";
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          // Typical action to be performed when the document is ready:
+          var data = JSON.parse(xhttp.responseText);
+
+          console.log("Response received successfully");
+          console.log(data);
+          var noOfPhotos = data['photos'].length;
+          if(noOfPhotos){
+            for(var i=0;i<noOfPhotos;i++){
+                var aCard = card.replace("{{img_src}}", data['photos'][i]['img_src']);
+                var parentDiv = document.getElementById('gallery-container');
+                var div = document.createElement('div');
+                div.innerHTML = aCard;
+
+                parentDiv.appendChild(div);
+            }
+          } else {
+            console.log("No photos received");
+            bodyHeaderDiv.innerHTML = "Sorry, No photos found for requested date: " + requestedDate;
+          }
+          console.log("Completed");
+        } else {
+          console.log("Http issue while talking to NASA api, status is ", this.status)
+        }
+    };
+    xhttp.open("GET", nasaApiUrl, true);
+    xhttp.send();
+}
