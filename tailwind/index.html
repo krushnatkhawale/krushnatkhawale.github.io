@@ -32,6 +32,14 @@
     <meta name="theme-color" content="#377cd7" />
     <!-- Icon tags -->
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/base.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/components.min.css" />
+    <link
+            rel="stylesheet"
+            href="https://unpkg.com/@tailwindcss/typography@0.2.x/dist/typography.min.css"
+    />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.5/dist/utilities.min.css" />
+
   </head>
 
   <body>
@@ -67,17 +75,16 @@
         <form class="flex items-center justify-center">
           <input type="date" id="requestedDate" class="rounded-full bg-white tracking-wider uppercase py-1 px-8"
           value="new Date().toISOString().slice(0, -14);"> &nbsp;
-          <button type="button" class="rounded-full bg-white tracking-wider uppercase py-1 px-8" onclick="fetchPhotos();">
+          <button type="button" class="rounded-full tracking-wider uppercase py-1 px-8 hover:from-pink-500 hover:to-yellow-500 bg-gradient-to-r bg-white" onclick="fetchPhotos();">
             Show me
           </button>
         </form>
-
       </div>
     </div>
-    <div id="bodyHeader" class="flex items-center justify-center">Today's curiosity clicks are </div>
+    <div id="bodyHeader" class="flex items-center justify-center bg-green-400 text-white prose-lg py-2 px-8 flex items-center justify-center bg-green-400 text-white prose-lg py-2 px-8 transition duration-500 transform scale-0">Today's curiosity clicks are </div>
     <section class="flex items-center justify-center">
-      <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4" id="gallery-container">
-        </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 " id="gallery-container">
+      </div>
     </section>
     <script src="js/index.js"></script>
 
