@@ -1,7 +1,3 @@
-
-
-console.log("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
-
 var card = '<div class="min-h-screen bg-gray-100 flex items-center justify-center py-50">'+
                 '<div class="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500">'+
                 '<div class="p-4">'+
@@ -34,13 +30,28 @@ var card = '<div class="min-h-screen bg-gray-100 flex items-center justify-cente
                 '</div>'+
             '</div>';
 
+var isToday = (someDate) => {
+  someDate = new Date(someDate)
+  var today = new Date()
+  return someDate.getDate() == today.getDate() &&
+    someDate.getMonth() == today.getMonth() &&
+    someDate.getFullYear() == today.getFullYear()
+}
+
 function fetchPhotos(){
+
     var requestedDateField = document.getElementById('requestedDate');
     var requestedDate = requestedDateField.value;
 
     console.log(requestedDate);
 
     var bodyHeaderDiv = document.getElementById('bodyHeader');
+
+    if(isToday(requestedDate)){
+        bodyHeaderDiv.innerHTML = "Usually, NASA api's most recent response is for two earth days in past, please select a date earlier than last two days";
+        return;
+    }
+
 
     var nasaApiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+ requestedDate +"&api_key=DEMO_KEY";
     var xhttp = new XMLHttpRequest();
