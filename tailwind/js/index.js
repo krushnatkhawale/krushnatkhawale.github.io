@@ -1,4 +1,4 @@
-var card = '<div class="min-h-screen bg-gray-100 flex items-center justify-center py-50">'+
+var card2 = '<div class="min-h-screen bg-gray-100 flex items-center justify-center py-50">'+
                 '<div class="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500">'+
                 '<div class="p-4">'+
                 '    <img class="rounded-xl" src="{{img_src}}" alt="Dog" />'+
@@ -10,6 +10,21 @@ var card = '<div class="min-h-screen bg-gray-100 flex items-center justify-cente
                 '</div>'+
             '</div>';
 
+var card = '<div class="rounded overflow-hidden shadow-lg">' +
+           '       <img class="w-96" src="{{img_src}}" alt="Mountain">' +
+           '       <div class="px-6 py-4">' +
+           '         <div class="font-bold text-xl mb-2">Mountain</div>' +
+           '         <p class="text-gray-700 text-base">' +
+           '             <h3 class="text-lg text-gray-900">Camera: {{cam_name}}</h3>'+
+           '         </p>' +
+           '       </div>' +
+           '       <div class="px-6 pt-4 pb-2">' +
+           '         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>' +
+           '         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>' +
+           '         <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>' +
+           '       </div>' +
+           '     </div>';
+
 var isTodayOrYesterday = (someDate) => {
   someDate = new Date(someDate)
   var today = new Date()
@@ -18,6 +33,23 @@ var isTodayOrYesterday = (someDate) => {
     someDate.getFullYear() == today.getFullYear()
 }
 
+function getGroupByCameraPhotos(data){
+    console.log(data.length, data);
+    var groupByCam = {};
+    for(var i=0;i<data.length;i++){
+        var camEntry = groupByCam[data[i]['camera']['name']];
+        if(camEntry){
+            var camEntryLength = groupByCam[data[i]['camera']['name']].length;
+            groupByCam[data[i]['camera']['name']][camEntryLength] = data[i];``
+
+        } else {
+            groupByCam[data[i]['camera']['name']]=[];
+            groupByCam[data[i]['camera']['name']][0] = data[i];
+        }
+    }
+    console.log("groupByCam", groupByCam);
+    return groupByCam;
+}
 
 function fetchPhotos(){
 
@@ -45,6 +77,7 @@ function fetchPhotos(){
           //Todo: getStats(data);
           var noOfPhotos = data['photos'].length;
           if(noOfPhotos){
+            var groupByCameraPhotos = getGroupByCameraPhotos(data['photos']);
             for(var i=0;i<noOfPhotos;i++){
                 var aCard = card.replace("{{img_src}}", data['photos'][i]['img_src'])
                                 .replace("{{cam_name}}", data['photos'][i]['camera']['name'])
