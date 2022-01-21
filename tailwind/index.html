@@ -43,44 +43,24 @@
   </head>
 
   <body>
-    <header class="container">
+    <header>
         <nav>
-            <div class="container mx-auto px-6 py-2 flex justify-between items-center">
-              <a class="font-bold text-2xl lg:text-4xl" href="#" id="headerLink">
+            <div class="mx-auto px-6 py-2 flex w-full" style="background: linear-gradient(90deg, #5a2017 0%, #5a2087 100%)">
+              <div class="w-full">
+              <a class="font-bold text-2xl text-white lg:text-4xl md:w-full" href="#" id="headerLink">
                 Be a Mars explorer
               </a>
-              <div class="block lg:hidden">
-                <button class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-teal-500 appearance-none focus:outline-none">
-                  <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                    <title>Menu</title>
-                    <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-                  </svg>
+              </div>
+              <form class="flex items-center justify-center">
+                <input type="date" id="requestedDate" class="rounded-full bg-white tracking-wider uppercase py-1 px-8"
+                       value="new Date().toISOString().slice(0, -14);"> &nbsp;
+                <button type="button" class="rounded-full tracking-wider uppercase py-1 px-8 hover:from-pink-500 hover:to-yellow-500 bg-gradient-to-r bg-white" onclick="fetchPhotos();">
+                  Fetch
                 </button>
-              </div>
-              <div class="hidden lg:block">
-                <ul class="inline-flex">
-                  <li><a class="px-4 font-bold" href="/">Home</a></li>
-                  <li><a class="px-4 hover:text-gray-800" href="#">About</a></li>
-                  <li><a class="px-4 hover:text-gray-800" href="#">Contact</a></li>
-                </ul>
-              </div>
+              </form>
             </div>
           </nav>
     </header>
-    <div class="py-10" style="background: linear-gradient(90deg, #5a2017 0%, #5a2087 100%)">
-      <div class="container mx-auto px-6">
-        <h2 class="text-l mb-8 text-gray-200">
-          Interested in Mars? Explore red planet through Curiosity's eyes, select a date and see what did NASA's Curiosity rover see on Mars on that day.
-        </h2>
-        <form class="flex items-center justify-center">
-          <input type="date" id="requestedDate" class="rounded-full bg-white tracking-wider uppercase py-1 px-8"
-          value="new Date().toISOString().slice(0, -14);"> &nbsp;
-          <button type="button" class="rounded-full tracking-wider uppercase py-1 px-8 hover:from-pink-500 hover:to-yellow-500 bg-gradient-to-r bg-white" onclick="fetchPhotos();">
-            Show me
-          </button>
-        </form>
-      </div>
-    </div>
     <div id="bodyHeader" class="flex items-center justify-center bg-green-400 text-white prose-lg py-2 px-8 flex items-center justify-center bg-green-400 text-white prose-lg py-2 px-8 transition duration-500 transform scale-0">Today's curiosity clicks are </div>
     <section class="flex items-center justify-center">
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 " id="gallery-container">
