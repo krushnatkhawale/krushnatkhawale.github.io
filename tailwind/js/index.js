@@ -1,15 +1,3 @@
-var card2 = '<div class="min-h-screen bg-gray-100 flex items-center justify-center py-50">'+
-                '<div class="max-w-md bg-white rounded-xl overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl hover:scale-105 transform transition-all duration-500">'+
-                '<div class="p-4">'+
-                '    <img class="rounded-xl" src="{{img_src}}" alt="Dog" />'+
-                '</div>'+
-                '<div class="p-6">'+
-                '    <h3 class="text-lg text-gray-900">Camera: {{cam_name}}</h3>'+
-                '    <h3 class="text-lg text-gray-900" title="Day since rover landed on Mars">Mars day: {{mars_day}}</h3>'+
-                '</div>'+
-                '</div>'+
-            '</div>';
-
 var card = '<div class="rounded overflow-hidden shadow-lg">' +
            '       <img class="w-96" src="{{img_src}}" alt="Mountain">' +
            '       <div class="px-6 py-4">' +
@@ -78,15 +66,28 @@ function fetchPhotos(){
           var noOfPhotos = data['photos'].length;
           if(noOfPhotos){
             var groupByCameraPhotos = getGroupByCameraPhotos(data['photos']);
-            for(var i=0;i<noOfPhotos;i++){
-                var aCard = card.replace("{{img_src}}", data['photos'][i]['img_src'])
-                                .replace("{{cam_name}}", data['photos'][i]['camera']['name'])
-                                .replace("{{mars_day}}", data['photos'][i]['sol']);
-                var parentDiv = document.getElementById('gallery-container');
-                var div = document.createElement('div');
-                div.innerHTML = aCard;
+            console.log("Group by cam: ", groupByCameraPhotos);
+            for (const property in groupByCameraPhotos) {
+                console.log('values', property, groupByCameraPhotos[property]);
 
-                parentDiv.appendChild(div);
+                var parentDiv = document.getElementById('gallery-container');
+                var h3 = document.createElement('h3');
+                h3.className = 'font-bold text-xl mb-2';
+                h3.innerHTML = property;
+                parentDiv.appendChild(h3);
+
+                var divWithCaptures = document.createElement('div');
+                divWithCaptures.className = 'grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-6 ';
+                for (const capture in groupByCameraPhotos[property]) {
+                    console.log('capture', capture, groupByCameraPhotos[property][capture]);
+
+                    var aCard = card.replace("{{img_src}}", groupByCameraPhotos[property][capture]['img_src'])
+                                    .replace("{{cam_name}}", groupByCameraPhotos[property][capture]['camera']['name'])
+                                    .replace("{{mars_day}}", groupByCameraPhotos[property][capture]['sol']);
+                    divWithCaptures.innerHTML += aCard;
+                }
+                parentDiv.appendChild(divWithCaptures);
+
             }
           } else {
             console.log("No photos received");
