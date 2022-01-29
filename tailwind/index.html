@@ -47,32 +47,35 @@
         <nav>
             <div class="mx-auto px-6 py-2 flex w-full bg-red-900 grid grid-cols-6 gap-6">
               <div class="col-span-6 sm:col-span-3">
-              <a class="font-bold text-2xl text-white lg:text-4xl md:w-full" href="#" id="headerLink">
-                Be a Mars explorer
-              </a>
+                <a class="font-bold text-2xl text-white lg:text-4xl md:w-full" href="#" id="headerLink">
+                  Be a Mars explorer
+                </a>
+                <p class="mt-1 text-sm text-gray-400 sm:hidden">
+                  Select rover type and date so see what NASA saw on MARS on that date.
+                </p>
               </div>
-              <div class="mt-10 sm:mt-0 col-span-6 sm:col-span-3">
+              <div class="col-span-6 sm:col-span-3">
                 <div class="md:grid md:grid-cols-3 md:gap-6">
                   <div class="md:col-span-3">
                     <div class="px-1 py-1">
                       <div class="grid grid-cols-6 gap-6">
 
                         <div class="col-span-6 sm:col-span-2">
-                          <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>Mexico</option>
+                          <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            <option>curiosity</option>
+                            <option>spirit</option>
+                            <option>perseverance</option>
                           </select>
                         </div>
 
                         <div class="col-span-6 sm:col-span-2">
-                          <input id="requestedDate" name="country" type="date" class="mt-1 py-2 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                          <input id="requestedDate" name="country" type="date" class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                  value="new Date().toISOString().slice(0, -14);">
                         </div>
 
                         <div class="col-span-6 sm:col-span-2">
                           <button type="button" onclick="fetchPhotos();"
-                                  class="mt-1 uppercase bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+                                  class="mt-1 w-full uppercase bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-700 rounded">
                             Fetch
                           </button>
                         </div>
