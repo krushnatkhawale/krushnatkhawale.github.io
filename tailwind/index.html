@@ -93,11 +93,12 @@
       </div>
     </section>
     <script src="js/index.js"></script>
-
     <script type="text/javascript">
 
         var requestedDateField = document.getElementById('requestedDate');
-        var requestedDate = new Date().toISOString().slice(0, -14);
+        var todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() - 2);
+        var requestedDate = todayDate.toISOString().slice(0, -14);
         requestedDateField.value = requestedDate;
 
         fetchPhotos();
