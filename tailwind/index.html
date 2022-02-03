@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>Krushnat Khavale</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174974267-1"></script>
@@ -10,90 +10,98 @@
         gtag('js', new Date());
 
         gtag('config', 'UA-174974267-1');
+
+
     </script>
 
     <!-- Meta tags -->
-    <meta charset="utf-8" />
+    <meta charset="utf-8"/>
     <meta
-      name="keyword"
-      content="krushnat, krush, krushnatkhawale, portfolio, nasa api, nasa-api, curiosity, curiosity-today"
+            name="keyword"
+            content="krushnat, krush, krushnatkhawale, portfolio, nasa api, nasa-api, curiosity, curiosity-today"
     />
     <meta
-      name="description"
-      content="This page will let you see what curiosity did see for the date time you selected"
+            name="description"
+            content="This page will let you see what curiosity did see for the date time you selected"
     />
-    <meta name="author" content="krushnatkhawale" />
-    <meta name="copyright" content="krushnat" />
-    <meta name="robots" content="follow" />
+    <meta name="author" content="krushnatkhawale"/>
+    <meta name="copyright" content="krushnat"/>
+    <meta name="robots" content="follow"/>
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=yes"
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=yes"
     />
-    <meta name="theme-color" content="#377cd7" />
+    <meta name="theme-color" content="#377cd7"/>
     <!-- Icon tags -->
     <link href="https://unpkg.com/tailwindcss@^2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/base.min.css" />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/components.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/base.min.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/components.min.css"/>
     <link
             rel="stylesheet"
             href="https://unpkg.com/@tailwindcss/typography@2.2.19/dist/typography.min.css"
     />
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/utilities.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2.2.19/dist/utilities.min.css"/>
 
-  </head>
+</head>
 
-  <body>
-    <header>
-        <nav>
-            <div class="mx-auto px-6 py-2 flex w-full bg-red-900 grid grid-cols-6 gap-6">
-              <div class="col-span-6 sm:col-span-3">
+<body>
+
+<header>
+    <nav>
+        <div class="mx-auto px-6 py-2 flex w-full bg-red-900 grid grid-cols-6 gap-6">
+            <div class="col-span-6 sm:col-span-3">
                 <a class="font-bold text-2xl text-white lg:text-4xl md:w-full" href="#" id="headerLink">
-                  Be a Mars explorer
+                    Be a Mars explorer
                 </a>
                 <p class="mt-1 text-sm text-gray-400 sm:hidden">
-                  Select rover type and date so see what NASA saw on MARS on that date.
+                    Select rover type and date so see what NASA saw on MARS on that date.
                 </p>
-              </div>
-              <div class="col-span-6 sm:col-span-3">
-                <div class="md:grid md:grid-cols-3 md:gap-6">
-                  <div class="md:col-span-3">
-                    <div class="px-1 py-1">
-                      <div class="grid grid-cols-6 gap-6">
-
-                        <div class="col-span-6 sm:col-span-2">
-                          <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                            <option>curiosity</option>
-                            <option>spirit</option>
-                            <option>perseverance</option>
-                          </select>
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-2">
-                          <input id="requestedDate" name="country" type="date" class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                 value="new Date().toISOString().slice(0, -14);">
-                        </div>
-
-                        <div class="col-span-6 sm:col-span-2">
-                          <button type="button" onclick="fetchPhotos();"
-                                  class="mt-1 w-full uppercase bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-700 rounded">
-                            Fetch
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </nav>
-    </header>
-    <div id="bodyHeader" class="flex items-center justify-center bg-gray-600 text-white prose-lg py-2 px-8 flex items-center justify-center prose-lg py-2 px-8 transition duration-500 transform scale-0">Today's curiosity clicks are </div>
-    <section class="flex items-center justify-center">
-      <div class="" id="gallery-container">
-      </div>
-    </section>
-    <script src="js/index.js"></script>
-    <script type="text/javascript">
+            <div class="col-span-6 sm:col-span-3">
+                <div class="md:grid md:grid-cols-3 md:gap-6">
+                    <div class="md:col-span-3">
+                        <div class="px-1 py-1">
+                            <div class="grid grid-cols-6 gap-6">
+
+                                <div class="col-span-6 sm:col-span-2">
+                                    <select id="country" name="country" autocomplete="country-name"
+                                            class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                        <option>curiosity</option>
+                                        <option>spirit</option>
+                                        <option>perseverance</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-2">
+                                    <input id="requestedDate" name="country" type="date"
+                                           class="mt-1 block w-full py-1 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                           value="new Date().toISOString().slice(0, -14);">
+                                </div>
+
+                                <div class="col-span-6 sm:col-span-2">
+                                    <button type="button" onclick="fetchPhotos();"
+                                            class="mt-1 w-full uppercase bg-blue-500 hover:bg-blue-700 text-white font-bold py-1 px-4 border border-blue-700 rounded">
+                                        Fetch
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+<div id="bodyHeader"
+     class="flex items-center justify-center bg-gray-600 text-white prose-lg py-2 px-8 flex items-center justify-center prose-lg py-2 px-8 transition duration-500 transform scale-0">
+    Today's curiosity clicks are
+</div>
+<section class="flex items-center justify-center">
+    <div class="" id="gallery-container">
+    </div>
+</section>
+<script src="js/index.js"></script>
+<script type="text/javascript">
 
         var requestedDateField = document.getElementById('requestedDate');
         var todayDate = new Date();
@@ -102,6 +110,8 @@
         requestedDateField.value = requestedDate;
 
         fetchPhotos();
-    </script>
-  </body>
+
+
+</script>
+</body>
 </html>

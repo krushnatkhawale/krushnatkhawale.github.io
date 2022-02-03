@@ -1,11 +1,15 @@
-var card = '<div class="rounded overflow-hidden shadow-lg">' +
+var card1 = '<div class="rounded overflow-hidden shadow-lg">' +
            '    <img class="w-96" src="{{img_src}}" alt="Mountain">' +
            '    <div class="px-6 pt-4 pb-2">' +
            '      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>' +
            '      <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>' +
            '   </div>' +
            '</div>';
-
+var card = '<div class="flex flex-wrap w-1/3">'+
+           '  <div class="w-full p-1 md:p-2">'+
+           '  <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src="{{img_src}}">'+
+           '  </div>'+
+           '</div>';
 var isTodayOrYesterday = (someDate) => {
   someDate = new Date(someDate)
   var today = new Date()
