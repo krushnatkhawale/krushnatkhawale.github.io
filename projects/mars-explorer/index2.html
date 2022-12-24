@@ -61,14 +61,14 @@
 
 <body>
 
-<header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
+<header style="background-color: red;">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-0"  style="background-color: red;">
+        <div class="container-fluid p-2" style="background-color: #621F10;">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
                     aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="#">Mars explorer <div class="d-lg-none"><i>Click on menu to select date</i></div> </a>
+            <a class="navbar-brand text-light" href="#"><img src="images/logo.png" width="45" style="background-color: black"/> Mars explorer <div class="d-lg-none"><i>Click on menu to select date</i></div> </a>
             <!-- HTML to write -->
             <a href="#" data-bs-toggle="tooltip" data-bs-html="true"
                data-bs-title="<div class='row bg-light text-dark m-1'>Watch most recent pictures captured by curiosity, spirit and perseverance rovers on Mars.
@@ -87,8 +87,8 @@
                 <form class="d-flex">
                     <select id="country" name="country" autocomplete="country-name" class="form-control me-2">
                         <option>curiosity</option>
-                        <option>spirit</option>
-                        <option>perseverance</option>
+                       <!-- <option>spirit</option>
+                        <option>perseverance</option>-->
                     </select>
                     <input id="requestedDate" name="country" type="date" class="form-control me-2"
                            value="new Date().toISOString().slice(0, -14);">
@@ -101,7 +101,7 @@
         </div>
     </nav>
 </header>
-<div id="bodyHeader" class="container">
+<div id="bodyHeader" class="container text-center alert alert-success mt-2">
     Today's curiosity clicks are
 </div>
 <section class="row m-4">

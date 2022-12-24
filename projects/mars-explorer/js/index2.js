@@ -1,5 +1,5 @@
-var card = '<div class="col"><div class="card" style="width: 18rem; height: 225px;">'+
-           '  <img alt="gallery" style="object-fit: cover; height: 100%;" class="" src="{{img_src}}">'+
+var card = '<div class="col"><div class="card" style="width: 18rem; height: 235px;">'+
+           '  <a href="{{img_src}}"><img alt="gallery" style="object-fit: cover; height: 100%;" class="" src="{{img_src}}"></a>'+
            '  <div class="card-body">'+
            '  </div>'+
            '</div></div>';
@@ -41,8 +41,13 @@ function fetchPhotos(){
         console.log("Can't retrieve for requested date: ", requestedDate);
         bodyHeaderDiv.innerHTML = "Usually, NASA api's most recent response is for two earth days in past, please select a date earlier than last two days";
         bodyHeaderDiv.classList.remove('scale-0');
+        bodyHeaderDiv.classList.add('alert-danger');
         return;
+    }else{
+        bodyHeaderDiv.classList.remove('alert-danger');
+        bodyHeaderDiv.classList.add('alert-success');
     }
+
 
     var nasaApiUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date="+ requestedDate +"&api_key=DEMO_KEY";
     var xhttp = new XMLHttpRequest();
@@ -65,16 +70,21 @@ function fetchPhotos(){
                     bodyHeaderDiv.innerHTML = "Curiosity rover took " + noOfPhotos + " photos using " + noOfCameras + " of it's cameras on "+ requestedDate;
                     bodyHeaderDiv.classList.remove('scale-0');
 
+                    accordionDiv.empty();
+                    var i = 1;
                     for (const property in groupByCameraPhotos) {
                         console.log('values', property, groupByCameraPhotos[property]);
 
+                        var firstDivShowState = i === 1?'show':'';
+                        var firstDivExpandedStatus = i++ === 1 ?'true':'false';
+
                         var accordionItem = $('<div class="accordion-item">' +
                         '    <h2 class="accordion-header" id="panelsStayOpen-heading'+property+'">' +
-                        '        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse'+property+'" aria-expanded="true" aria-controls="panelsStayOpen-collapse'+property+'">' +
+                        '        <button class="accordion-button " type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapse'+property+'" aria-expanded="'+ firstDivExpandedStatus +'" aria-controls="panelsStayOpen-collapse'+property+'">' +
                         '       ' + groupByCameraPhotos[property][0]['camera']['full_name'] + "( " + property + " ) captured " + groupByCameraPhotos[property].length + ' photos' +
                         '        </button>' +
                         '    </h2>' +
-                        '    <div id="panelsStayOpen-collapse'+property+'" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-heading'+property+'">' +
+                        '    <div id="panelsStayOpen-collapse'+property+'" class="accordion-collapse collapse '+ firstDivShowState +'" aria-labelledby="panelsStayOpen-heading'+property+'">' +
                         '        <div class="accordion-body-'+property+'">' +
                         '        </div>' +
                         '    </div>' +
@@ -88,9 +98,9 @@ function fetchPhotos(){
                         divWithCaptures.className = '';
                         for (const capture in groupByCameraPhotos[property]) {
 
-                            var aCard = card.replace("{{img_src}}", groupByCameraPhotos[property][capture]['img_src'])
-                                            .replace("{{cam_name}}", groupByCameraPhotos[property][capture]['camera']['name'])
-                                            .replace("{{mars_day}}", groupByCameraPhotos[property][capture]['sol']);
+                            var aCard = card.replace("{{cam_name}}", groupByCameraPhotos[property][capture]['camera']['name'])
+                                            .replace("{{mars_day}}", groupByCameraPhotos[property][capture]['sol'])
+                                            .replaceAll("{{img_src}}", groupByCameraPhotos[property][capture]['img_src']);
                             divWithCaptures.append(aCard);
                         }
                         accordionBody.append(divWithCaptures);
