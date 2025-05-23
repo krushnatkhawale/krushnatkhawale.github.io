@@ -68,3 +68,94 @@ footer {
   font-size: 0.9em;
   color: #555;
 }
+
+
+
+/* /Users/hulk/UIProjects/krushnatkhawale.github.io/src/App.css */
+
+/* ... (your existing styles) ... */
+
+.contact-links {
+  margin-top: 20px;
+}
+
+.contact-links p {
+  margin-bottom: 15px;
+  font-size: 1.1em;
+}
+
+.contact-links ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex; /* Enables flexbox for layout */
+  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+  gap: 20px; /* Adds space between items */
+  justify-content: center; /* Centers items if they don't fill the whole width */
+}
+
+.contact-links li {
+  /* Each list item can grow and shrink as needed */
+  /* flex: 1 1 auto; */ /* Uncomment if you want items to stretch more */
+}
+
+.contact-links a {
+  display: flex; /* Align icon and text horizontally */
+  align-items: center; /* Vertically center icon and text */
+  text-decoration: none;
+  color: #333; /* Adjust link color to fit your theme */
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #f0f0f0; /* Light background for each link item */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  min-width: 120px; /* Minimum width for each link box */
+  justify-content: center; /* Center content within the link box */
+}
+
+.contact-links a:hover {
+  background-color: #e0e0e0; /* Slightly darker on hover */
+  transform: translateY(-2px); /* Slight lift effect on hover */
+  color: #007bff; /* Change color on hover if desired */
+}
+
+.contact-icon {
+  font-size: 1.5em; /* Adjust icon size */
+  margin-right: 10px; /* Space between icon and text */
+  color: #555; /* Default icon color, can be overridden */
+}
+
+/* Optional: Specific icon colors if desired */
+.contact-links a:hover .contact-icon {
+  /* color: #007bff; */ /* Example: Change icon color on link hover */
+}
+
+/* Example: LinkedIn specific icon color on hover (if you want brand colors) */
+/* .contact-links a[href*="linkedin.com"]:hover .contact-icon {
+  color: #0077B5;
+} */
+
+/* Example: GitHub specific icon color on hover */
+/* .contact-links a[href*="github.com"]:hover .contact-icon {
+  color: #181717;
+} */
+
+/* Example: Email specific icon color on hover */
+/* .contact-links a[href*="mailto:"]:hover .contact-icon {
+  color: #c71610; /* Example: Gmail red */
+/* } */
+
+
+/* Responsive adjustments (optional, flex-wrap often handles a lot) */
+@media (max-width: 600px) {
+  .contact-links ul {
+    flex-direction: column; /* Stack items vertically on very small screens */
+    align-items: center; /* Center items when stacked */
+  }
+
+  .contact-links a {
+    width: 100%; /* Make links take full width when stacked */
+    max-width: 300px; /* But not too wide */
+    justify-content: flex-start; /* Align icon/text to the left when stacked */
+  }
+}
+
+/* ... (rest of your existing styles) ... */
