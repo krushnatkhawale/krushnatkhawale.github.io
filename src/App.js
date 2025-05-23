@@ -5,21 +5,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Welcome to My Awesome Website!</h1>
-        <p>
-          This is my personal website, built with React and hosted on GitHub Pages.
-        </p>
-        <p>
-          Feel free to explore and learn more about me and my projects.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <img
+          src={process.env.PUBLIC_URL + '/images/my-profile-photo.jpg'}
+          alt="My Profile"
+          className="profile-image"
+        />
+        <h1>Welcome, thanks for stopping by!</h1>
       </header>
       <main>
         <section>
@@ -45,7 +36,7 @@ function App() {
         </section>
       </main>
       <footer>
-        <p>&copy; {new Date().getFullYear()} Your Name. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Krushnat Khavale. All rights reserved.</p>
       </footer>
     </div>
   );
