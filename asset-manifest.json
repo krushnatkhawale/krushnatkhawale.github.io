@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/krushnatkhawale.github.io/static/css/main.f104e1fc.css",
+    "main.js": "/krushnatkhawale.github.io/static/js/main.356b3551.js",
+    "static/js/453.891a07f9.chunk.js": "/krushnatkhawale.github.io/static/js/453.891a07f9.chunk.js",
+    "index.html": "/krushnatkhawale.github.io/index.html",
+    "main.f104e1fc.css.map": "/krushnatkhawale.github.io/static/css/main.f104e1fc.css.map",
+    "main.356b3551.js.map": "/krushnatkhawale.github.io/static/js/main.356b3551.js.map",
+    "453.891a07f9.chunk.js.map": "/krushnatkhawale.github.io/static/js/453.891a07f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f104e1fc.css",
+    "static/js/main.356b3551.js"
+  ]
+}
