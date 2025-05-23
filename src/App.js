@@ -17,14 +17,13 @@ function App() {
         <section>
           <h2>About Me</h2>
           <p>
-            This is where you can write a little bit about yourself.
-            What are your passions? What do you do?
+            A new version of my introduction is coming soon.
           </p>
         </section>
         <section>
           <h2>Projects</h2>
           <p>
-            Showcase some of your cool projects here!
+            Currently down for tidy up. Coming soon!
           </p>
           {/* You can add more project details later */}
         </section>
