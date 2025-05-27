@@ -1,133 +1,3 @@
-.App {
-  text-align: center;
-  font-family: sans-serif;
-  color: #333;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 30vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-  padding: 20px;
-}
-.profile-image {
-  width: 150px; /* Adjust size as needed */
-  height: 150px; /* Adjust size as needed */
-  border-radius: 50%; /* Makes the image circular */
-  object-fit: cover; /* Ensures the image covers the area without distortion */
-  border: 3px solid #61dafb; /* Optional: adds a border matching the link color */
-  margin-bottom: 10px; /* Adds some space below the image */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a subtle shadow */
-}
-.App-link {
-  color: #61dafb;
-  text-decoration: none;
-  margin-top: 20px;
-}
-
-.App-link:hover {
-  text-decoration: underline;
-}
-
-main {
-  padding: 20px;
-}
-
-section {
-  margin-bottom: 40px;
-  padding: 20px;
-  border-bottom: 1px solid #eee;
-}
-
-section:last-child {
-  border-bottom: none;
-}
-
-h1 {
-  margin-bottom: 10px;
-}
-
-h2 {
-  color: #282c34;
-  margin-bottom: 15px;
-}
-
-p {
-  line-height: 1.6;
-}
-
-footer {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f7f7f7;
-  font-size: 0.9em;
-  color: #555;
-}
-
-
-
-/* /Users/hulk/UIProjects/krushnatkhawale.github.io/src/App.css */
-
-/* ... (your existing styles) ... */
-
-.contact-links {
-  margin-top: 20px;
-}
-
-.contact-links p {
-  margin-bottom: 15px;
-  font-size: 1.1em;
-}
-
-.contact-links ul {
-  list-style-type: none;
-  padding: 0;
-  display: flex; /* Enables flexbox for layout */
-  flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
-  gap: 20px; /* Adds space between items */
-  justify-content: center; /* Centers items if they don't fill the whole width */
-}
-
-.contact-links li {
-  /* Each list item can grow and shrink as needed */
-  /* flex: 1 1 auto; */ /* Uncomment if you want items to stretch more */
-}
-
-.contact-links a {
-  display: flex; /* Align icon and text horizontally */
-  align-items: center; /* Vertically center icon and text */
-  text-decoration: none;
-  color: #333; /* Adjust link color to fit your theme */
-  padding: 10px 15px;
-  border-radius: 8px;
-  background-color: #f0f0f0; /* Light background for each link item */
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  min-width: 120px; /* Minimum width for each link box */
-  justify-content: center; /* Center content within the link box */
-}
-
-.contact-links a:hover {
-  background-color: #e0e0e0; /* Slightly darker on hover */
-  transform: translateY(-2px); /* Slight lift effect on hover */
-  color: #007bff; /* Change color on hover if desired */
-}
-
-.contact-icon {
-  font-size: 1.5em; /* Adjust icon size */
-  margin-right: 10px; /* Space between icon and text */
-  color: #555; /* Default icon color, can be overridden */
-}
-
-/* Optional: Specific icon colors if desired */
-.contact-links a:hover .contact-icon {
-  /* color: #007bff; */ /* Example: Change icon color on link hover */
-}
-
 /* Example: LinkedIn specific icon color on hover (if you want brand colors) */
 /* .contact-links a[href*="linkedin.com"]:hover .contact-icon {
   color: #0077B5;
@@ -162,36 +32,45 @@ footer {
 
 /* Default Light Theme Variables */
 :root {
+  --bg-color: #ffffff;
   --background-color: #ffffff;
-  --text-color: #282c34;
-  --header-background: #f0f0f0;
-  --link-color: #007bff;
-  --link-hover-color: #0056b3;
-  --icon-color: #333;
-  --button-bg-color: #61dafb;
-  --button-text-color: #282c34;
-  --button-hover-bg-color: #4fa8c5;
-  --footer-bg-color: #f9f9f9;
-  --section-border-color: #eee;
+  --text-color: #212529; /* Dark gray for text */
+  --primary-accent-color: #6f42c1; /* A nice purple */
+  --secondary-accent-color: #007bff; /* Blue for links or secondary actions */
+  --surface-bg-color: #f8f9fa; /* Light gray for card-like backgrounds */
+  --border-color: #dee2e6; /* Light border color */
+  --header-footer-bg: #f8f9fa;
+  --icon-color: #495057;
+  --button-bg: #6f42c1;
+  --button-text-color: #212529;
+  --button-hover-bg: #5a32a3;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --link-color: var(--secondary-accent-color);
+  --link-hover-color: var(--primary-accent-color);
+
 }
 
 /* Dark Theme Variables */
 .dark-mode {
-  --background-color: #282c34;
-  --text-color: #f0f0f0;
-  --header-background: #1c1e22;
-  --link-color: #61dafb;
-  --link-hover-color: #82e9ff;
-  --icon-color: #61dafb;
-  --button-bg-color: #3a3f47;
-  --button-text-color: #f0f0f0;
-  --button-hover-bg-color: #505660;
-  --footer-bg-color: #20232a;
-  --section-border-color: #444;
+  --background-color: #121212;
+  --bg-color: #121212; /* Very dark background */
+  --text-color: #e0e0e0; /* Light gray for text */
+  --primary-accent-color: #9b59b6; /* A slightly lighter, vibrant purple */
+  --secondary-accent-color: #58a6ff; /* Lighter blue for links */
+  --surface-bg-color: #1e1e1e; /* Dark gray for card-like backgrounds */
+  --border-color: #333333; /* Darker border color */
+  --header-footer-bg: #1a1a1a;
+  --icon-color: #adb5bd;
+  --button-bg: #9b59b6;
+  --button-text-color: #ffffff;
+  --button-hover-bg: #8e44ad;
+  --shadow-color: rgba(255, 255, 255, 0.05);
+  --link-color: var(--secondary-accent-color);
+  --link-hover-color: var(--primary-accent-color);
+
 }
 
 body {
-  background-color: var(--background-color);
   color: var(--text-color);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -199,7 +78,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  line-height: 1.6;
 }
 
 .App {
@@ -207,19 +89,23 @@ body {
 }
 
 .App-header {
-  background-color: var(--header-background);
   min-height: 20vh; /* Adjusted height */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: var(--text-color);
   padding: 20px;
+  background-color: var(--header-footer-bg);
+  padding: 30px 20px;
+  color: var(--text-color);
   position: relative; /* For positioning the button */
   transition: background-color 0.3s ease, color 0.3s ease;
+  border-bottom: 1px solid var(--border-color);
 }
-
+.App-header h1 {
+  margin-bottom: -0.99em; /* Adjust this value as needed */
+}
 .profile-image {
   width: 150px; /* Adjust size as needed */
   height: 150px; /* Adjust size as needed */
@@ -236,7 +122,7 @@ body {
   padding: 8px 15px;
   font-size: 0.9rem;
   cursor: pointer;
-  background-color: var(--button-bg-color);
+  background-color: var(--bg-color);
   color: var(--button-text-color);
   border: 1px solid var(--text-color);
   border-radius: 5px;
@@ -293,7 +179,7 @@ section p {
 
 .contact-links li a:hover {
   color: var(--link-hover-color);
-  background-color: var(--background-color); /* Subtle background on hover */
+  background-color: var(--surface-bg-color); /* Subtle background on hover */
 }
 
 .contact-icon {
@@ -305,7 +191,7 @@ section p {
 
 footer {
   padding: 20px;
-  background-color: var(--footer-bg-color);
+  background-color: var(--header-footer-bg);
   color: var(--text-color);
   font-size: 0.9rem;
   margin-top: 40px;
