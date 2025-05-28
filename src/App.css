@@ -89,7 +89,7 @@ body {
 }
 
 .App-header {
-  min-height: 20vh; /* Adjusted height */
+  min-height: 3vh; /* Adjusted height */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -97,16 +97,11 @@ body {
   font-size: calc(10px + 2vmin);
   padding: 20px;
   background-color: var(--header-footer-bg);
-  padding: 30px 20px;
+  padding: 10px 20px;
   color: var(--text-color);
   position: relative; /* For positioning the button */
   transition: background-color 0.3s ease, color 0.3s ease;
   border-bottom: 1px solid var(--border-color);
-}
-
-.App-header h2, h3, h4 {
-  margin-top: 1.15em; /* Adjust this value as needed */
-  margin-bottom: -0.99em; /* Adjust this value as needed */
 }
 
 .hero-text-content {
@@ -114,10 +109,14 @@ body {
   margin-bottom: 1.5rem; /* Space before the nav */
 }
 
-.hero-text-content h1 {
-  font-size: 3rem; /* Example: Large and impactful */
-  margin-bottom: 0.25rem; /* Reduce space below h1 */
-  color: var(--text-color); /* Assuming you have CSS variables for theme */
+.hero-text-content h1 span.dynamic-welcome-message {
+  display: inline-block; /* Helps with layout consistency if message lengths vary */
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out; /* Duration and easing of the fade effect */
+}
+
+.hero-text-content h1 span.dynamic-welcome-message.fading-out {
+  opacity: 0;
 }
 
 .hero-subtitle {
@@ -211,6 +210,28 @@ body {
 .theme-toggle-button:hover {
   background-color: var(--button-hover-bg-color);
 }
+
+.main-nav {
+  display: flex;
+  gap: 15px; /* Spacing between nav links */
+  margin-top: 10px; /* Space above the nav bar */
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: var(--link-color);
+  padding: 2px 15px;
+  border-radius: 5px;
+  font-weight: 500;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.main-nav a:hover,
+.main-nav a.active { /* Assuming you might add an 'active' class for the current page */
+  color: var(--link-hover-color);
+  background-color: var(--surface-bg-color); /* Use surface color for a subtle highlight */
+}
+
 
 main {
   padding: 20px;

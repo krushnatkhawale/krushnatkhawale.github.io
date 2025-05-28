@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom'; // For navigation links
 function Header({ isDarkMode, toggleDarkMode }) {
   return (
     <header className="App-header">
-      <img
-        src={process.env.PUBLIC_URL + '/images/my-profile-photo.jpg'}
-        alt="My Profile"
-        className="profile-image"
-      />
-      
+      <nav className="main-nav">
+        <Link to="/">About</Link>
+        <Link to="/projects">Projects</Link>
+        <Link to="/contact">Contact</Link>
+      </nav>
+
       <button
         onClick={toggleDarkMode}
         className="theme-toggle-button"
@@ -18,12 +18,6 @@ function Header({ isDarkMode, toggleDarkMode }) {
       >
         {isDarkMode ? <FaSun /> : <FaMoon />}
       </button>
-      
-      <nav className="main-nav">
-        <Link to="/">About</Link>
-        <Link to="/projects">Projects</Link>
-        <Link to="/contact">Contact</Link>
-      </nav>
     </header>
   );
 }
