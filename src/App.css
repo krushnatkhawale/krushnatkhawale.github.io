@@ -103,8 +103,87 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
   border-bottom: 1px solid var(--border-color);
 }
-.App-header h1 {
+
+.App-header h2, h3, h4 {
+  margin-top: 1.15em; /* Adjust this value as needed */
   margin-bottom: -0.99em; /* Adjust this value as needed */
+}
+
+.hero-text-content {
+  margin-top: 1rem; /* Adjust as needed */
+  margin-bottom: 1.5rem; /* Space before the nav */
+}
+
+.hero-text-content h1 {
+  font-size: 3rem; /* Example: Large and impactful */
+  margin-bottom: 0.25rem; /* Reduce space below h1 */
+  color: var(--text-color); /* Assuming you have CSS variables for theme */
+}
+
+.hero-subtitle {
+  font-size: 1rem; /* Smaller than h1 */
+  font-weight: 300; /* Lighter font weight */
+  color: var(--text-secondary-color); /* A slightly muted color */
+  margin-top: 0; /* Remove default top margin if any */
+  margin-bottom: 1.5rem; /* Space before the next section */
+}
+
+.hero-introduction {
+  margin-top: 1rem; /* Space above this section */
+}
+
+.intro-prefix {
+  font-size: 1.5rem; /* Larger than subtitle, smaller than h1 */
+  font-weight: 500;
+  margin-bottom: 0.5rem; /* Space before the roles */
+  color: var(--text-color);
+}
+
+.intro-roles {
+  display: flex;
+  flex-direction: column; /* Stack roles vertically */
+  align-items: center; /* Center roles if stacked */
+  gap: 0.3rem; /* Space between roles */
+}
+
+.role {
+  font-size: 1.2rem; /* Size for the roles */
+  font-weight: 400;
+  color: var(--text-color);
+  /* Optional: Style them like tags/badges */
+  /* background-color: var(--accent-color-light); */
+  /* padding: 0.25rem 0.75rem; */
+  /* border-radius: 4px; */
+  /* display: inline-block; */ /* If you want them side-by-side with spacing */
+}
+.role:hover {
+  transform: translateY(-2px); /* Slight lift on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .hero-text-content h1 {
+    font-size: 3.5rem; /* Slightly larger on bigger screens */
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .intro-prefix {
+    font-size: 1.75rem;
+  }
+
+  .role {
+    font-size: 1.3rem;
+  }
+
+  /* Example: Roles side-by-side on larger screens */
+  /* .intro-roles {
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+  } */
 }
 .profile-image {
   width: 150px; /* Adjust size as needed */

@@ -18,8 +18,7 @@ function Header({ isDarkMode, toggleDarkMode }) {
       >
         {isDarkMode ? <FaSun /> : <FaMoon />}
       </button>
-      <h1>Welcome</h1>
-      <h6>thanks for stopping by!</h6>
+      
       <nav className="main-nav">
         <Link to="/">About</Link>
         <Link to="/projects">Projects</Link>
