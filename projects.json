@@ -1,56 +1,56 @@
 [
   {
     "id": 1,
-    "title": "E-commerce Platform",
+    "title": "Dummy-E-commerce Platform",
     "link": "https://github.com/yourusername/ecommerce-platform",
     "description": "A full-featured e-commerce platform built with React, Node.js, and MongoDB. Includes product listings, cart functionality, user authentication, and an admin panel.",
     "tags": ["React", "Node.js", "MongoDB", "Express", "JWT"]
   },
   {
     "id": 2,
-    "title": "Task Management App",
+    "title": "Dummy-Task Management App",
     "link": "https://github.com/yourusername/task-manager",
     "description": "A responsive task management application allowing users to create, organize, and track their tasks. Built with Vue.js and Firebase.",
     "tags": ["Vue.js", "Firebase", "Vuetify", "PWA"]
   },
   {
     "id": 3,
-    "title": "Personal Portfolio Website",
+    "title": "Dummy-Personal Portfolio Website",
     "link": "https://github.com/krushnatkhawale/krushnatkhawale.github.io",
     "description": "The very website you are looking at! Built with React to showcase my projects and skills. Features dark mode and a clean UI.",
     "tags": ["React", "JavaScript", "CSS", "HTML"]
   },
   {
     "id": 4,
-    "title": "Weather Dashboard",
+    "title": "Dummy-Weather Dashboard",
     "link": "https://github.com/yourusername/weather-dashboard",
     "description": "A web application that displays current weather and forecasts for cities using a third-party weather API. Implemented with vanilla JavaScript.",
     "tags": ["JavaScript", "HTML", "CSS", "API"]
   },
   {
     "id": 5,
-    "title": "Blog Engine",
+    "title": "Dummy-Blog Engine",
     "link": "https://github.com/yourusername/blog-engine",
     "description": "A lightweight blog engine developed with Python (Flask) and SQLite. Supports Markdown for posts and has a simple admin interface.",
     "tags": ["Python", "Flask", "SQLite", "Markdown"]
   },
   {
     "id": 6,
-    "title": "Data Visualization Tool",
+    "title": "Dummy-Data Visualization Tool",
     "link": "https://github.com/yourusername/data-viz",
     "description": "A tool for creating interactive charts and graphs from CSV data, using D3.js for powerful visualizations.",
     "tags": ["D3.js", "JavaScript", "SVG"]
   },
   {
     "id": 7,
-    "title": "Recipe Finder",
+    "title": "Dummy-Recipe Finder",
     "link": "https://github.com/yourusername/recipe-finder",
     "description": "Search for recipes based on ingredients you have. Integrates with a recipe API. Built with Angular.",
     "tags": ["Angular", "TypeScript", "API"]
   },
   {
     "id": 8,
-    "title": "Chat Application",
+    "title": "Dummy-Chat Application",
     "link": "https://github.com/yourusername/realtime-chat",
     "description": "A real-time chat application using WebSockets (Socket.io) and Node.js for instant messaging.",
     "tags": ["Node.js", "Socket.io", "Express", "React"]
