@@ -47,7 +47,7 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
   --link-color: var(--secondary-accent-color);
   --link-hover-color: var(--primary-accent-color);
-
+  
 }
 
 /* Dark Theme Variables */
@@ -308,4 +308,151 @@ footer a:hover {
 }
 
 
-/* ... (rest of your existing styles) ... */
+/* ... (rest of the styles) ... */
+
+.projects-section {
+  padding: 20px;
+  /* margin-bottom: 40px; /* Consistent with other sections */
+  max-width: 960px; /* Constrain width to encourage larger cards in fewer columns */
+  margin-left: auto;
+  margin-right: auto; 
+}
+
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.projects-header h2 {
+  margin: 0; /* Remove default margin if h2 is used here */
+}
+
+.view-toggle-button {
+  background-color: var(--button-bg);
+  color: var(--button-text-color); /* Note: Ensure this provides good contrast, see suggestion below */
+  border: 1px solid var(--border-color);
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.view-toggle-button:hover {
+  background-color: var(--button-hover-bg);
+  /* color: var(--button-hover-text-color); /* If you have a specific hover text color */
+}
+
+/* Default: Card View / Grid View */
+.projects-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); /* Slightly larger min width */
+  gap: 30px;
+  padding: 0;
+  list-style: none;
+  transition: gap 0.4s ease-in-out;
+}
+
+.project-card {
+  background-color: var(--surface-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 25px;
+  box-shadow: 0 2px 5px var(--shadow-color);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, width 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 8px 16px var(--shadow-color);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex-grow: 1; /* Allows description to take available space */
+  transition: margin-bottom 0.4s ease-in-out;
+}
+
+.project-card-content {
+  flex-grow: 1; /* Allows content to fill space, pushing tags to bottom */
+  display: flex;
+  flex-direction: column;
+}
+.project-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.6rem;
+}
+
+.project-card h3 a {
+  text-decoration: none;
+  color: var(--primary-accent-color);
+  transition: color 0.2s ease;
+}
+
+.project-card h3 a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+.project-card .project-description {
+  font-size: 1.0rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  flex-grow: 1; /* Allows description to take available space */
+}
+
+.project-tags {
+  margin-top: auto; /* Pushes tags to the bottom of the card content area */
+  padding-top: 12px; /* Space above tags if description is short */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  transition: margin-top 0.4s ease-in-out, padding-top 0.4s ease-in-out;
+}
+
+.project-tag {
+  background-color: var(--secondary-accent-color);
+  color: #ffffff; /* Using white for better contrast on accent color background */
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* List View Styles */
+.projects-list.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Spacing between list items */
+}
+
+.projects-list.list-view .project-card {
+  flex-direction: row; /* Content side-by-side */
+  align-items: flex-start; /* Align items to the top */
+  width: 100%;
+}
+
+.projects-list.list-view .project-card .project-card-content {
+  flex-grow: 1;
+}
+
+.projects-list.list-view .project-card .project-description {
+  margin-bottom: 10px; /* Adjust spacing for list view */
+}
+
+.projects-list.list-view .project-tags {
+  margin-top: 10px; /* Adjust spacing for list view */
+  padding-top: 0;
+}
+
+
+.loading-indicator {
+  text-align: center;
+  padding: 20px;
+  color: var(--text-secondary-color);
+  font-style: italic;
+}

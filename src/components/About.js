@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Contact from './Contact';
 
 const translations = {
   'hi': 'स्वागत है', // Hindi
@@ -106,6 +107,7 @@ function About({ isDarkMode, toggleDarkMode }) {
           <span className="role">🎯 TDD-BDD practitioner</span>
         </div>
       </div>
+      <Contact />
       </div>
     </section>
   );
