@@ -33,7 +33,7 @@ function Projects() {
   return (
     <section className="projects-section">
       <div className="projects-header">
-        <h2>My Projects</h2>
+        <h2>My Projects (Dummy list for now 🤪)</h2>
         <button onClick={toggleView} className="view-toggle-button">
           {isListView ? 'Card View' : 'List View'}
         </button>
