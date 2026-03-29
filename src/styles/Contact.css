@@ -1,0 +1,121 @@
+.contact-section {
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contact-section.light-mode {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.contact-section.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+.contact-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.contact-subtitle {
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  opacity: 0.8;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 150px;
+}
+
+.light-mode .contact-link {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #333;
+}
+
+.dark-mode .contact-link {
+  background-color: #2d2d2d;
+  border: 1px solid #444;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  color: #e0e0e0;
+}
+
+.contact-link:hover {
+  transform: translateY(-4px);
+}
+
+.light-mode .contact-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .contact-link:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.contact-icon {
+  font-size: 2.5rem;
+  transition: color 0.3s ease;
+}
+
+.light-mode .contact-link:hover .contact-icon {
+  color: #007bff;
+}
+
+.dark-mode .contact-link:hover .contact-icon {
+  color: #64b5f6;
+}
+
+.contact-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.contact-text {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1rem;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    min-width: 100%;
+  }
+}

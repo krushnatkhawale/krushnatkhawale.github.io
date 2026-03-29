@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "Getting Started with React Hooks",
+    "description": "A comprehensive guide to understanding and using React Hooks effectively in your applications",
+    "date": "2024-03-15",
+    "category": "React",
+    "link": "https://medium.com/@krushnatkhawale/react-hooks",
+    "tags": ["React", "Hooks", "JavaScript"]
+  },
+  {
+    "id": 2,
+    "title": "Spring Boot Microservices Architecture",
+    "description": "Building scalable microservices with Spring Boot, best practices and patterns",
+    "date": "2024-02-20",
+    "category": "Backend",
+    "link": "https://medium.com/@krushnatkhawale/spring-boot-microservices",
+    "tags": ["Spring Boot", "Microservices", "Architecture"]
+  },
+  {
+    "id": 3,
+    "title": "Docker for Beginners",
+    "description": "Learn containerization basics with Docker and deployment best practices",
+    "date": "2024-01-10",
+    "category": "DevOps",
+    "link": "https://medium.com/@krushnatkhawale/docker-beginners",
+    "tags": ["Docker", "DevOps", "Containers"]
+  }
+]

@@ -1,52 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import ProjectCard from './ProjectCard'; // We'll create this component
+import React from 'react';
+import ProjectCard from './ProjectCard';
+import '../styles/Projects.css';
+import projectsData from '../data/projects.json';
 
-function Projects() {
-  const [displayedProjects, setDisplayedProjects] = useState([]);
-  const [isListView, setIsListView] = useState(false); // false for Card view, true for List view
-  const [isLoading, setIsLoading] = useState(true);
-
-  // Fetch projects from JSON
-  useEffect(() => {
-    setIsLoading(true);
-    fetch('/projects.json') // Assuming projects.json is in the public folder
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(data => {
-        setDisplayedProjects(data);
-        setIsLoading(false);
-      })
-      .catch(error => {
-        console.error("Could not fetch projects:", error);
-        setIsLoading(false);
-      });
-  }, []);
-
-  const toggleView = () => {
-    setIsListView(prevIsListView => !prevIsListView);
-  };
-
+function Projects({ isDarkMode, toggleDarkMode }) {
   return (
-    <section className="projects-section">
-      <div className="projects-header">
-        <h2>My Projects (Dummy list for now 🤪)</h2>
-        <button onClick={toggleView} className="view-toggle-button">
-          {isListView ? 'Card View' : 'List View'}
-        </button>
+    <section 
+      id="projects" 
+      className={`projects-section ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
+    >
+      <div className="projects-container">
+        <h1 className="projects-title">My Projects</h1>
+        <p className="projects-subtitle">Featured projects showcasing my skills and experience</p>
+        
+        <div className="projects-grid">
+          {projectsData.map(project => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
+        </div>
       </div>
-       {isLoading && <p className="loading-indicator">Loading projects...</p>}
-      {!isLoading && displayedProjects.length === 0 && <p>No projects to display at the moment.</p>}
-      <ul className={`projects-list ${isListView ? 'list-view' : ''}`}>
-        {
-          displayedProjects.map((project, index) => (
-            <ProjectCard key={project.id || index} project={project} />
-          ))
-        }
-      </ul>
     </section>
   );
 }

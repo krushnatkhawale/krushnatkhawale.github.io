@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "title": "Associate Director",
+    "company": "UBS",
+    "time": "2024 - Present",
+    "logo": "https://cdn.simpleicons.org/ubs/1f1f1f",
+    "description": "Developed and maintained database applications",
+    "link": "https://www.ubs.com/global/en/legal/country/india.html"
+  },
+  {
+    "id": 2,
+    "title": "Senior Consultant",
+    "company": "Capgemini",
+    "time": "2019 - 2021",
+    "logo": "https://cdn.simpleicons.org/capgemini/1f1f1f",
+    "description": "Built backend apps using spring batch, springboot, messaging frameworks",
+    "link": "https://www.capgemini.com"
+  },
+    {
+    "id": 3,
+    "title": "Consultant",
+    "company": "Capgemini",
+    "time": "2017 - 2021",
+    "logo": "https://cdn.simpleicons.org/capgemini/1f1f1f",
+    "description": "Built backend apps using spring batch, springboot, messaging frameworks",
+    "link": "https://www.capgemini.com"
+  }
+
+]

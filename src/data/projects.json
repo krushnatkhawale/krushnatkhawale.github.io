@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Portfolio Website",
+    "description": "Modern portfolio website built with React and showcasing projects and experience",
+    "techStack": ["React", "CSS3", "JavaScript"],
+    "link": "https://github.com/krushnatkhawale/portfolio",
+    "liveURL": "https://krushnatkhawale.com"
+  },
+  {
+    "id": 2,
+    "title": "E-Commerce Platform",
+    "description": "Full-stack e-commerce application with Spring Boot backend and React frontend",
+    "techStack": ["Spring Boot", "React", "PostgreSQL", "Docker"],
+    "link": "https://github.com/krushnatkhawale/ecommerce",
+    "liveURL": "https://ecommerce-demo.com"
+  },
+  {
+    "id": 3,
+    "title": "Task Management App",
+    "description": "Collaborative task management tool with real-time updates using WebSocket",
+    "techStack": ["Spring Boot", "WebSocket", "React", "MongoDB"],
+    "link": "https://github.com/krushnatkhawale/task-manager",
+    "liveURL": "https://task-app-demo.com"
+  }
+]

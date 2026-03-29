@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "title": "Master of Computer Applications",
+    "field": "Management",
+    "logo": "/images/university-logo.png",
+    "description": "Graduated with distinction",
+    "link": "https://example.edu"
+  },
+  {
+    "id": 2,
+    "title": "Bachelor of Computer Science",
+    "field": "Computer Science",
+    "logo": "/images/university-logo.png",
+    "description": "Comprehensive course covering modern web technologies",
+    "link": "https://example.com"
+  }
+]

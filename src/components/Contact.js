@@ -1,44 +1,42 @@
 import React from 'react';
-import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter, FaStackOverflow } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaTwitter } from 'react-icons/fa';
+import '../styles/Contact.css';
 
-function Contact() {
+function Contact({ isDarkMode, toggleDarkMode }) {
   return (
-    <section id="contact">
-      <h2>Contact</h2>
-      <div className="contact-links">
-        <p>You can reach out to me via:</p>
-        <ul>
-          <li>
-            <a href="mailto:krushnatkhawale@gmail.com">
-              <FaEnvelope className="contact-icon" />
-              <span>Email</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/krushnatkhavale/" target="_blank" rel="noopener noreferrer">
-              <FaLinkedin className="contact-icon" />
-              <span>LinkedIn</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://github.com/krushnatkhawale" target="_blank" rel="noopener noreferrer">
-              <FaGithub className="contact-icon" />
-              <span>GitHub</span>
-            </a>
-          </li>
-          <li>
-            <a href="https://stackoverflow.com/users/1446358/krushnat-khavale" target="_blank" rel="noopener noreferrer">
-              <FaStackOverflow className="contact-icon" />
-              <span> Stack Overflow </span>
-            </a>
-          </li>
-          <li>
-            <a href="https://x.com/krushnatkhavale" target="_blank" rel="noopener noreferrer">
-              <FaTwitter className="contact-icon" />
-              <span> X </span>
-            </a>
-          </li>
-         </ul>
+    <section 
+      id="contact" 
+      className={`contact-section ${isDarkMode ? 'dark-mode' : 'light-mode'}`}
+    >
+      <div className="contact-container">
+        <h1 className="contact-title">Get In Touch</h1>
+        <p className="contact-subtitle">Feel free to reach out to me via your preferred channel</p>
+        
+        <div className="contact-links">
+          <a href="mailto:krushnatkhawale@gmail.com" className="contact-link">
+            <FaEnvelope className="contact-icon" />
+            <span className="contact-label">Email</span>
+            <span className="contact-text">krushnatkhawale@gmail.com</span>
+          </a>
+          
+          <a href="https://www.linkedin.com/in/krushnatkhavale/" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <FaLinkedin className="contact-icon" />
+            <span className="contact-label">LinkedIn</span>
+            <span className="contact-text">krushnatkhavale</span>
+          </a>
+          
+          <a href="https://github.com/krushnatkhawale" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <FaGithub className="contact-icon" />
+            <span className="contact-label">GitHub</span>
+            <span className="contact-text">krushnatkhawale</span>
+          </a>
+          
+          <a href="https://x.com/krushnatkhavale" target="_blank" rel="noopener noreferrer" className="contact-link">
+            <FaTwitter className="contact-icon" />
+            <span className="contact-label">X (Twitter)</span>
+            <span className="contact-text">@krushnatkhavale</span>
+          </a>
+        </div>
       </div>
     </section>
   );

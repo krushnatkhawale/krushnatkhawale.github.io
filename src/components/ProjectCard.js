@@ -2,29 +2,35 @@ import React from 'react';
 
 function ProjectCard({ project }) {
   if (!project) {
-    return null; // Or some placeholder/error
+    return null;
   }
 
+  const { id, title, description, techStack, link, liveURL } = project;
+
   return (
-    <li className="project-card">
-      <div className="project-card-content">
-        <h3>
-          <a href={project.link} target="_blank" rel="noopener noreferrer">
-            {project.title}
-          </a>
-        </h3>
-        <p className="project-description">{project.description}</p>
-      </div>
-      {project.tags && project.tags.length > 0 && (
-        <div className="project-tags">
-          {project.tags.map((tag, index) => (
-            <span key={index} className="project-tag">
-              {tag}
-            </span>
+    <div className="project-card" key={id}>
+      <h2 className="project-card-title">{title}</h2>
+      <p className="project-card-desc">{description}</p>
+      
+      {techStack && techStack.length > 0 && (
+        <div className="tech-stack">
+          {techStack.map((tech, index) => (
+            <span key={index} className="tech-badge">{tech}</span>
           ))}
         </div>
       )}
-    </li>
+      
+      <div className="project-card-links">
+        <a href={link} target="_blank" rel="noopener noreferrer" className="project-link">
+          GitHub →
+        </a>
+        {liveURL && (
+          <a href={liveURL} target="_blank" rel="noopener noreferrer" className="project-link">
+            Live Demo →
+          </a>
+        )}
+      </div>
+    </div>
   );
 }
 

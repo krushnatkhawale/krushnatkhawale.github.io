@@ -8,7 +8,8 @@ function Header({ isDarkMode, toggleDarkMode }) {
       <nav className="main-nav">
         <Link to="/">About</Link>
         <Link to="/projects">Projects</Link>
-        {/* <Link to="/contact">Contact</Link> */}
+        <Link to="/blogs">Blogs</Link>
+        <Link to="/contact">Contact</Link>
       </nav>
 
       <button

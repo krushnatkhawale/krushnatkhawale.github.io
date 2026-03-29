@@ -50,23 +50,23 @@
   
 }
 
-/* Dark Theme Variables */
+/* Dark Theme Variables - Dracula Theme */
 .dark-mode {
-  --background-color: #121212;
-  --bg-color: #121212; /* Very dark background */
-  --text-color: #e0e0e0; /* Light gray for text */
-  --primary-accent-color: #9b59b6; /* A slightly lighter, vibrant purple */
-  --secondary-accent-color: #58a6ff; /* Lighter blue for links */
-  --surface-bg-color: #1e1e1e; /* Dark gray for card-like backgrounds */
-  --border-color: #333333; /* Darker border color */
-  --header-footer-bg: #1a1a1a;
-  --icon-color: #adb5bd;
-  --button-bg: #9b59b6;
-  --button-text-color: #ffffff;
-  --button-hover-bg: #8e44ad;
-  --shadow-color: rgba(255, 255, 255, 0.05);
+  --background-color: #282a36;
+  --bg-color: #282a36; /* Dracula background */
+  --text-color: #f8f8f2; /* Dracula foreground */
+  --primary-accent-color: #bd93f9; /* Dracula purple */
+  --secondary-accent-color: #8be9fd; /* Dracula cyan */
+  --surface-bg-color: #44475a; /* Dracula current line */
+  --border-color: #6272a4; /* Dracula comment color */
+  --header-footer-bg: #21222c;
+  --icon-color: #f1fa8c;
+  --button-bg: #bd93f9;
+  --button-text-color: #282a36;
+  --button-hover-bg: #ff79c6;
+  --shadow-color: rgba(68, 71, 90, 0.3);
   --link-color: var(--secondary-accent-color);
-  --link-hover-color: var(--primary-accent-color);
+  --link-hover-color: #50fa7b;
 
 }
 
@@ -84,6 +84,19 @@ body {
   line-height: 1.6;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-accent-color);
+}
+
+a {
+  color: var(--link-color);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
 .App {
   text-align: center;
 }
@@ -99,7 +112,10 @@ body {
   background-color: var(--header-footer-bg);
   padding: 10px 20px;
   color: var(--text-color);
-  position: relative; /* For positioning the button */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s ease, color 0.3s ease;
   border-bottom: 1px solid var(--border-color);
 }
@@ -201,7 +217,7 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   background-color: var(--bg-color);
-  color: var(--button-text-color);
+  color: var(--icon-color);
   border: 1px solid var(--text-color);
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -219,7 +235,7 @@ body {
 
 .main-nav a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--primary-accent-color);
   padding: 2px 15px;
   border-radius: 5px;
   font-weight: 500;
@@ -228,19 +244,33 @@ body {
 
 .main-nav a:hover,
 .main-nav a.active { /* Assuming you might add an 'active' class for the current page */
-  color: var(--link-hover-color);
+  color: var(--secondary-accent-color);
   background-color: var(--surface-bg-color); /* Use surface color for a subtle highlight */
 }
 
 
 main {
-  padding: 20px;
+  padding: 0;
+}
+
+/* Override padding for about-section to allow it to manage its own layout */
+main #about {
+  padding: 0;
+  margin: 0;
+  border: none;
 }
 
 section {
   margin-bottom: 40px;
   padding: 20px;
-  border-bottom: 1px solid var(--section-border-color);
+  border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+section#about {
+  margin: 0;
+  padding: 0;
+  border: none;
+  margin-bottom: 0;
 }
 
 section:last-child {
@@ -248,7 +278,7 @@ section:last-child {
 }
 
 section h2 {
-  color: var(--text-color);
+  color: var(--primary-accent-color);
   margin-bottom: 15px;
 }
 
