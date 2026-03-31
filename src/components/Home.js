@@ -32,7 +32,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
                   />
                 </a>
                 <h1 className="profile-name">Krushnat Khawale</h1>
-                <p className="profile-bio">Java backend Developer | TDD Enthusiast | Clean coder | Problem Solver | <a>more..</a></p>
+                <p className="profile-bio">Java backend Developer | TDD Enthusiast | Clean coder | Problem Solver | <a href="/about">more..</a></p>
 
                 <div className="profile-links">
                   <a
