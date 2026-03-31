@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedinIn, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaLink } from 'react-icons/fa';
 import '../styles/Home.css';
 import experiencesData from '../data/experiences.json';
@@ -32,7 +33,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
                   />
                 </a>
                 <h1 className="profile-name">Krushnat Khawale</h1>
-                <p className="profile-bio">Java backend Developer | TDD Enthusiast | Clean coder | Problem Solver | <a href="/about">more..</a></p>
+                <p className="profile-bio">Java backend Developer | TDD Enthusiast | Clean coder | Problem Solver | <Link to="/about">more..</Link></p>
 
                 <div className="profile-links">
                   <a
