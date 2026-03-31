@@ -81,7 +81,6 @@ function Home({ isDarkMode, toggleDarkMode }) {
               {/* Coding Activity Card */}
               <div className="card">
                 <h2>Coding Activity</h2>
-                <p>Powered by wakatime.com</p>
                 <figure>
                   <embed src="https://wakatime.com/share/@krushnatkhawale/69ca1817-11a9-4124-b5ba-8b0d462c2bea.svg"></embed>
                 </figure>
@@ -93,7 +92,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
 
               {/* Skills Card */}
               <div className="card">
-                <h2>Skills</h2>
+                <h1>Skills</h1>
                 <div className="skills-list">
                   <div className="skill-item">
                     <strong className="skill-category">Backend:</strong>
@@ -116,7 +115,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
 
               {/* Work Experience Card */}
               <div className="card">
-                <h2 className="card-title">Work Experience</h2>
+                <h1 className="">Work Experience</h1>
 
                 {experiences.map(exp => (
                   <div className="experience-item" key={exp.id}>

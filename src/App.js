@@ -10,6 +10,7 @@ import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import About from './components/About';
+import Chatbot from './components/Chatbot';
 
 // Initialize Google Analytics
 // Replace 'G-XXXXXXXXXX' with your actual Google Analytics Measurement ID
@@ -70,6 +71,7 @@ function App() {
     <Router>
       <div className="App">
         <AppContent isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+        <Chatbot isDarkMode={isDarkMode} />
       </div>
     </Router>
   );

@@ -1,0 +1,90 @@
+{
+  "portfolio": {
+    "name": "Krushnat Khawale",
+    "title": "Java Backend Developer | TDD Enthusiast | Clean Coder",
+    "location": "Pune, India",
+    "email": "krushnatkhawale@gmail.com",
+    "about": "I'm a passionate Java developer with a keen interest in building modern server-side applications that are both performant and scalable. I enjoy solving complex problems and creating elegant solutions. When I'm not coding, I explore new technologies and use keyboards for music production.",
+    "social": {
+      "github": "https://github.com/krushnatkhawale",
+      "linkedin": "https://www.linkedin.com/in/krushnatkhavale/",
+      "twitter": "https://x.com/krushnatkhavale"
+    },
+    "skills": {
+      "backend": ["Microservices (SpringBoot)", "DATA-ETL (Spring Batch, Spring Integration)", "Messaging Apps (RabbitMQ, Kafka)", "Build Tools (Gradle)", "Azure", "Batch Processing"],
+      "frontend": ["HTML", "CSS", "JavaScript", "React"],
+      "tools": ["Git", "GitHub", "Docker", "Linux", "Jenkins"],
+      "databases": ["PostgreSQL", "Gemfire"]
+    },
+    "experience": [
+      {
+        "id": 1,
+        "title": "Associate Director",
+        "company": "UBS",
+        "duration": "2024 - Present",
+        "description": "SQL batch processing, Azure deployment and monitoring"
+      },
+      {
+        "id": 2,
+        "title": "Senior Consultant",
+        "company": "Capgemini",
+        "duration": "2019 - 2021",
+        "description": "Spring Boot microservices migration (PCF to OpenShift), Gemfire to Postgres data migration"
+      },
+      {
+        "id": 3,
+        "title": "Consultant",
+        "company": "Capgemini",
+        "duration": "2017 - 2019",
+        "description": "Spring Batch/Boot applications, RabbitMQ messaging, CI/CD pipelines with Jenkins and Ansible"
+      }
+    ],
+    "education": [
+      {
+        "title": "Bachelor of Technology",
+        "field": "Computer Engineering",
+        "description": "Foundation in software development and computer science"
+      }
+    ],
+    "projects": [
+      {
+        "title": "Portfolio Website",
+        "description": "React frontend with CSS3 and JavaScript, deployed on GitHub Pages",
+        "techStack": ["React", "CSS3", "JavaScript", "GitHub Pages"],
+        "link": "https://krushnatkhawale.github.io"
+      },
+      {
+        "title": "E-Commerce Platform",
+        "description": "Full-stack application with Spring Boot backend, React frontend, PostgreSQL database, Docker containerization",
+        "techStack": ["Spring Boot", "React", "PostgreSQL", "Docker"],
+        "link": "https://github.com/krushnatkhawale"
+      },
+      {
+        "title": "Task Management App",
+        "description": "Real-time collaboration with WebSocket support, Spring Boot backend, MongoDB storage",
+        "techStack": ["Spring Boot", "WebSocket", "MongoDB"],
+        "link": "https://github.com/krushnatkhawale"
+      }
+    ],
+    "blogs": [
+      {
+        "title": "React Hooks: A Complete Guide",
+        "date": "2024-03-15",
+        "category": "React",
+        "tags": ["React", "JavaScript", "Frontend"]
+      },
+      {
+        "title": "Spring Boot Microservices Architecture",
+        "date": "2024-02-20",
+        "category": "Backend",
+        "tags": ["Spring Boot", "Microservices", "Java"]
+      },
+      {
+        "title": "Docker for Beginners",
+        "date": "2024-01-10",
+        "category": "DevOps",
+        "tags": ["Docker", "Containers", "DevOps"]
+      }
+    ]
+  }
+}
