@@ -112,7 +112,7 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     }
 
     // Call Gemini API
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
 
     const chat = model.startChat({
       history: [],
