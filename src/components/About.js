@@ -23,99 +23,7 @@ function About({ isDarkMode, toggleDarkMode }) {
       <div className="main-container">
         <div className="container-lg">
           <div className="row">
-            {/* Left Sidebar */}
-            <div className="col-lg-4">
-              {/* Profile Card */}
-              <div className="card profile-card">
-                <a href="/">
-                  <img
-                    src={process.env.PUBLIC_URL + '/images/my-profile-photo.jpg'}
-                    alt="Profile"
-                    className="profile-img"
-                  />
-                </a>
-                <h1 className="profile-name">Krushnat Khawale</h1>
-                <p className="profile-bio">Java backend Developer | AI Enthusiast</p>
-
-                <div className="profile-links">
-                  <a
-                    className="social-link"
-                    href="https://github.com/krushnatkhawale"
-                    title="GitHub"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaGithub />
-                  </a>
-                  <a
-                    className="social-link"
-                    href="https://www.linkedin.com/in/krushnatkhavale/"
-                    title="LinkedIn"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaLinkedinIn />
-                  </a>
-                  <a
-                    className="social-link"
-                    href="https://x.com/krushnatkhavale"
-                    title="X (Twitter)"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FaTwitter />
-                  </a>
-                </div>
-
-                <h6>
-                  <FaMapMarkerAlt /> Pune, India
-                </h6>
-                <h6>
-                  <FaEnvelope /> krushnatkhawale@gmail.com
-                </h6>
-                <h6>
-                  <a href="https://krushnatkhawale.github.io/" target="_blank" rel="noopener noreferrer" className="website-link">
-                    <FaLink /> krushnatkhawale.github.io
-                  </a>
-                </h6>
-              </div>
-
-              {/* Skills Card */}
-              <div className="card">
-                <h1>Skills</h1>
-                <div className="skills-list">
-                  <div className="skill-item">
-                    <strong className="skill-category">Backend:</strong>
-                    <span className="skill-text">Spring Boot, Java</span>
-                  </div>
-                  <div className="skill-item">
-                    <strong className="skill-category">Frontend:</strong>
-                    <span className="skill-text">HTML, CSS, JavaScript, React</span>
-                  </div>
-                  <div className="skill-item">
-                    <strong className="skill-category">Tools:</strong>
-                    <span className="skill-text">Git, GitHub, Docker, Linux</span>
-                  </div>
-                  <div className="skill-item">
-                    <strong className="skill-category">Databases:</strong>
-                    <span className="skill-text">PostgreSQL, Gemfire</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Coding Activity Card */}
-              <div className="card">
-                <h1>Coding Activity</h1>
-                <p>Track your coding activity using Wakatime. Connect your account at wakatime.com</p>
-                <figure>
-                  <embed src="https://wakatime.com/share/@krushnatkhawale/69ca1817-11a9-4124-b5ba-8b0d462c2bea.svg"></embed>
-                </figure>
-              </div>
-            </div>
-
-            {/* Right Content */}
-            <div className="col-lg-8">
-              {/* About Card */}
+            {/* About Card */}
               <div className="card">
                 <h1 className="card-title">About</h1>
                 <p>
@@ -124,62 +32,26 @@ function About({ isDarkMode, toggleDarkMode }) {
                   solutions that make a real impact. When I'm not coding, you'll find me exploring new technologies
                   or using keyboard for music.
                 </p>
-              </div>
 
-              {/* Work Experience Card */}
-              <div className="card">
-                <h1 className="card-title">Work Experience</h1>
-
-                {experiences.map(exp => (
-                  <div className="experience-item" key={exp.id}>
-                    <div className="company-logo-wrapper">
-                      <img 
-                        src={exp.logo} 
-                        alt={exp.company} 
-                        className="company-logo"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `<div class="company-logo-fallback">${exp.company.charAt(0)}</div>`;
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <div className="experience-title-wrapper">
-                        <h4 className="experience-title">{exp.title} @ {exp.company}</h4>
-                        <p className="experience-time">{exp.time}</p>
-                      </div>
-                      <p className="experience-desc">{exp.description}</p>
-                    </div>
+                <div className="education-grid">
+                  <div className="card">
+                    <h2>Top Languages</h2>
+                    <figure><embed src="https://wakatime.com/share/@krushnatkhawale/c8be49d6-3e08-4539-8fec-859e3d54cb1f.svg"></embed></figure>
                   </div>
-                ))}
-              </div>
-
-              {/* Education Card */}
-              <div className="card">
-                <h1 className="card-title">Education</h1>
-
-                {education.map(edu => (
-                  <div className="experience-item" key={edu.id}>
-                    <div className="company-logo-wrapper">
-                      <img 
-                        src={edu.logo} 
-                        alt={edu.field} 
-                        className="company-logo"
-                        onError={(e) => {
-                          e.target.style.display = 'none';
-                          e.target.parentElement.innerHTML = `<div class="company-logo-fallback">${edu.title.charAt(0)}</div>`;
-                        }}
-                      />
-                    </div>
-                    <div>
-                      <h4 className="experience-title">{edu.title}</h4>
-                      <h6 className="experience-info">{edu.field}</h6>
-                      <p className="experience-desc">{edu.description}</p>
-                    </div>
+                  <div className="card">
+                    <h2>Coding Type</h2>
+                    <figure><embed src="https://wakatime.com/share/@krushnatkhawale/646d3219-e613-451d-8a58-8c663cd83e22.svg"></embed></figure>
+                  </div> 
+                  <div className="card">
+                    <h2>All time activity</h2>
+                    <figure><embed src="https://wakatime.com/share/@krushnatkhawale/e84f13f2-3ffb-4bbf-968f-681d7a88aaee.svg"></embed></figure>
                   </div>
-                ))}
-              </div>
-            </div>
+                  <div className="card">
+                    <h2>OS Used</h2>
+                    <figure><embed src="https://wakatime.com/share/@krushnatkhawale/ff94424b-a99f-4ac2-93f4-c23864b51ddb.svg"></embed></figure>
+                  </div>  
+                </div>
+              </div>             
           </div>
         </div>
       </div>

@@ -2,17 +2,17 @@
   {
     "id": 1,
     "title": "Master of Computer Applications",
-    "field": "Management",
-    "logo": "/images/university-logo.png",
-    "description": "Graduated with distinction",
+    "field": "Pune University",
+    "logo": "/images/Pune-University-Logo.png",
+    "description": "2010 - 2014",
     "link": "https://example.edu"
   },
   {
     "id": 2,
     "title": "Bachelor of Computer Science",
-    "field": "Computer Science",
-    "logo": "/images/university-logo.png",
-    "description": "Comprehensive course covering modern web technologies",
+    "field": "Shivaji University, Kolhapur",
+    "logo": "/images/Shivaji-University-Logo.jpeg",
+    "description": "2007 - 2010",
     "link": "https://example.com"
   }
 ]

@@ -6,10 +6,11 @@ function Header({ isDarkMode, toggleDarkMode }) {
   return (
     <header className="App-header">
       <nav className="main-nav">
-        <Link to="/">About</Link>
+        <Link to="/">Home</Link>
         <Link to="/projects">Projects</Link>
         <Link to="/blogs">Blogs</Link>
         <Link to="/contact">Contact</Link>
+        <Link to="/about">About</Link>
       </nav>
 
       <button
