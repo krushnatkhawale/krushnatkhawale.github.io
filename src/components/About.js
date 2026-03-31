@@ -25,7 +25,7 @@ function About({ isDarkMode, toggleDarkMode }) {
         <p className="about-subtitle">A passionate developer focused on building scalable solutions</p>
 
         <div className="about-statistics">
-          <h3 className="statistics-title">Coding Statistics</h3>
+          <h3 className="statistics-title">Coding Stats</h3>
           <div className="statistics-grid">
             <div className="statistic-card">
               <h3>Top Languages</h3>
