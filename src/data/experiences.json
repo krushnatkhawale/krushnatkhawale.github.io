@@ -5,7 +5,7 @@
     "company": "UBS",
     "time": "2024 - Present",
     "logo": "/images/UBS_Logo.svg",
-    "description": "Developed and maintained database applications",
+    "description": "Developed and maintained sql based batch processing applications, azure based deployment and monitoring",
     "link": "https://www.ubs.com/global/en/legal/country/india.html"
   },
   {
@@ -14,7 +14,7 @@
     "company": "Capgemini",
     "time": "2019 - 2021",
     "logo": "/images/Capgemini_Logo.png",
-    "description": "Built backend apps using spring batch, springboot, messaging frameworks",
+    "description": "Migrated springboot based microservices from PCF to OpenShift, created specialized solutions for migrating data from Gemfire to Postgres.",
     "link": "https://www.capgemini.com"
   },
   {
@@ -23,7 +23,7 @@
     "company": "Capgemini",
     "time": "2017 - 2019",
     "logo": "/images/Capgemini_Logo.png",
-    "description": "Built backend apps using spring batch, springboot, messaging frameworks",
+    "description": "Built backend apps using spring batch, springboot, messaging apps using RabbitMQ, created and maintained CI/CD pipelines using Jenkins and Ansible for PCF, VMs.",
     "link": "https://www.capgemini.com"
   }
 ]

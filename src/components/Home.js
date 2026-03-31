@@ -96,7 +96,7 @@ function Home({ isDarkMode, toggleDarkMode }) {
                 <div className="skills-list">
                   <div className="skill-item">
                     <strong className="skill-category">Backend:</strong>
-                    <span className="skill-text">Microservices (SpringBoot), DATA-ETL (Spring Batch), Messaging (RabbitMQ, Kafka)</span>
+                    <span className="skill-text">Microservices (SpringBoot), DATA-ETL (Spring Batch, Spring Integration), Messaging Apps (RabbitMQ, Kafka), Build Tools (Gradle)</span>
                   </div>
                   <div className="skill-item">
                     <strong className="skill-category">Frontend:</strong>
