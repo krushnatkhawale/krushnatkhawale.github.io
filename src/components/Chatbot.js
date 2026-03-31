@@ -48,8 +48,9 @@ function Chatbot({ isDarkMode }) {
     setQuestionsRemaining(prev => prev - 1);
 
     try {
+      console.log("chatbot request: ", inputValue   );        
       // Call backend API
-      const backendURL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3001';
+      const backendURL = process.env.REACT_APP_BACKEND_URL || 'https://krushnatkhawale-github-io.onrender.com';
       const response = await fetch(`${backendURL}/api/chat`, {
         method: 'POST',
         headers: {
