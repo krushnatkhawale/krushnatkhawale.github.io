@@ -72,6 +72,7 @@ function Chatbot({ isDarkMode }) {
         };
         setMessages(prev => [...prev, botMessage]);
       } else {
+        console.error('Error from backend:', data, data.error);
         const errorMessage = {
           id: messages.length + 2,
           text: data.error || 'Sorry, I encountered an error. Please try again.',
