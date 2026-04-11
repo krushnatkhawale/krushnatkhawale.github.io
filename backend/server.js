@@ -10,6 +10,12 @@ const app = express();
 
 // Middleware
 app.use(express.json());
+
+app.use((req, res, next) => {
+  console.log(`backend request:${req.method} ${req.path} - Body:`, req.body);
+  next();
+});
+
 app.use(cors({
   origin: [
     'http://localhost:3000',
