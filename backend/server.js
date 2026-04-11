@@ -12,7 +12,22 @@ const app = express();
 app.use(express.json());
 
 app.use((req, res, next) => {
-  console.log(`backend request:${req.method} ${req.path} - Body:`, req.body);
+  const timestamp = new Date().toISOString();
+  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+  const userAgent = req.get('User-Agent');
+  const sessionId = req.body?.sessionId || 'no-session';
+
+  const logDetails = {
+    timestamp,
+    method: req.method,
+    path: req.path,
+    ip,
+    sessionId,
+    userAgent,
+    body: req.body
+  };
+
+  console.log('Incoming Request:', JSON.stringify(logDetails, null, 2));
   next();
 });
 
