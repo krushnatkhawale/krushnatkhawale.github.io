@@ -1,18 +1,18 @@
 [
   {
     "id": 1,
-    "title": "Getting Started with React Hooks",
-    "description": "A comprehensive guide to understanding and using React Hooks effectively in your applications",
-    "date": "2024-03-15",
-    "category": "React",
-    "link": "https://medium.com/@krushnatkhawale/react-hooks",
-    "tags": ["React", "Hooks", "JavaScript"]
+    "title": "Spring boot: Integrating OpenAI’s API with SpringAI",
+    "description": "A comprehensive guide to understanding and using SpringAI effectively in your springboot applications",
+    "date": "2024-01-05",
+    "category": "microservices",
+    "link": "https://medium.com/@krushnatkhawale/unleashing-the-power-of-generative-ai-integrating-openais-api-with-springai-7bbc9ebbe138",
+    "tags": ["Spring Boot", "Spring AI", "OpenAI", "Java"]
   },
   {
     "id": 2,
-    "title": "Spring Boot Microservices Architecture",
-    "description": "Building scalable microservices with Spring Boot, best practices and patterns",
-    "date": "2024-02-20",
+    "title": "OpenTracing using Jaeger with spring boot web application",
+    "description": "Monitoring and troubleshooting microservices-based distributed systems",
+    "date": "2020-07-25",
     "category": "Backend",
     "link": "https://medium.com/@krushnatkhawale/spring-boot-microservices",
     "tags": ["Spring Boot", "Microservices", "Architecture"]

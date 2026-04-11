@@ -15,8 +15,8 @@ function BlogCard({ blog }) {
   return (
     <div className="blog-card" key={id}>
       <div className="blog-card-header">
-        <h2 className="blog-card-title">{title}</h2>
         <span className="blog-category">{category}</span>
+        <h2 className="blog-card-title">{title}</h2>
       </div>
       
       <p className="blog-card-desc">{description}</p>
