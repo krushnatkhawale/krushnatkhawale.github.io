@@ -11,6 +11,8 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import About from './components/About';
 import Chatbot from './components/Chatbot';
+import WorkInProgress from './components/WorkInProgress';
+import PageNotFound from './components/PageNotFound';
 
 // Initialize Google Analytics
 // Replace 'G-XXXXXXXXXX' with your actual Google Analytics Measurement ID
@@ -31,7 +33,7 @@ function AppContent({ isDarkMode, toggleDarkMode }) {
       <main>
         <Routes>
           <Route path="/" element={<Home isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
-          <Route path="/projects" element={<Projects isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
+          <Route path="/projects" element={<WorkInProgress isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
           <Route path="/blogs" element={<Blogs isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
           <Route path="/contact" element={<Contact isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
           <Route path="/about" element={<About isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />} />
