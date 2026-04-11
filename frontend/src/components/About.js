@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaGithub, FaLinkedinIn, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaLink } from 'react-icons/fa';
 import '../styles/About.css';
-import experiencesData from '../data/experiences.json';
+import experiencesData from '../data/experience.json';
 import educationData from '../data/education.json';
 
 function About({ isDarkMode, toggleDarkMode }) {

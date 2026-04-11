@@ -11,79 +11,159 @@
       "twitter": "https://x.com/krushnatkhavale"
     },
     "skills": {
-      "backend": ["Microservices (SpringBoot)", "DATA-ETL (Spring Batch, Spring Integration)", "Messaging Apps (RabbitMQ, Kafka)", "Build Tools (Gradle)", "Azure", "Batch Processing"],
-      "frontend": ["HTML", "CSS", "JavaScript", "React"],
-      "tools": ["Git", "GitHub", "Docker", "Linux", "Jenkins"],
-      "databases": ["PostgreSQL", "Gemfire"]
+      "backend": [
+        "Microservices (SpringBoot)",
+        "DATA-ETL (Spring Batch, Spring Integration)",
+        "Messaging Apps (RabbitMQ, Kafka)",
+        "Build Tools (Gradle)",
+        "Azure",
+        "Batch Processing"
+      ],
+      "frontend": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ],
+      "tools": [
+        "Git",
+        "GitHub",
+        "Docker",
+        "Linux",
+        "Jenkins"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "Gemfire"
+      ]
     },
     "experience": [
       {
         "id": 1,
         "title": "Associate Director",
         "company": "UBS",
-        "duration": "2024 - Present",
-        "description": "SQL batch processing, Azure deployment and monitoring"
+        "time": "2024 - Present",
+        "logo": "/images/UBS_Logo.svg",
+        "description": "Developed and maintained sql based batch processing applications, azure based deployment and monitoring",
+        "link": "https://www.ubs.com/global/en/legal/country/india.html"
       },
       {
         "id": 2,
         "title": "Senior Consultant",
         "company": "Capgemini",
-        "duration": "2019 - 2021",
-        "description": "Spring Boot microservices migration (PCF to OpenShift), Gemfire to Postgres data migration"
+        "time": "2019 - 2021",
+        "logo": "/images/Capgemini_Logo.png",
+        "description": "Migrated springboot based microservices from PCF to OpenShift, created specialized solutions for migrating data from Gemfire to Postgres.",
+        "link": "https://www.capgemini.com"
       },
       {
         "id": 3,
         "title": "Consultant",
         "company": "Capgemini",
-        "duration": "2017 - 2019",
-        "description": "Spring Batch/Boot applications, RabbitMQ messaging, CI/CD pipelines with Jenkins and Ansible"
+        "time": "2017 - 2019",
+        "logo": "/images/Capgemini_Logo.png",
+        "description": "Built backend apps using spring batch, springboot, messaging apps using RabbitMQ, created and maintained CI/CD pipelines using Jenkins and Ansible for PCF, VMs.",
+        "link": "https://www.capgemini.com"
       }
     ],
     "education": [
       {
-        "title": "Bachelor of Technology",
-        "field": "Computer Engineering",
-        "description": "Foundation in software development and computer science"
+        "id": 1,
+        "title": "Master of Computer Applications",
+        "field": "Pune University",
+        "logo": "/images/Pune-University-Logo.png",
+        "description": "2010 - 2014",
+        "link": "https://example.edu"
+      },
+      {
+        "id": 2,
+        "title": "Bachelor of Computer Science",
+        "field": "Shivaji University, Kolhapur",
+        "logo": "/images/Shivaji-University-Logo.jpeg",
+        "description": "2007 - 2010",
+        "link": "https://example.com"
       }
     ],
     "projects": [
       {
+        "id": 1,
         "title": "Portfolio Website",
-        "description": "React frontend with CSS3 and JavaScript, deployed on GitHub Pages",
-        "techStack": ["React", "CSS3", "JavaScript", "GitHub Pages"],
-        "link": "https://krushnatkhawale.github.io"
+        "description": "Modern portfolio website built with React and showcasing projects and experience",
+        "techStack": [
+          "React",
+          "CSS3",
+          "JavaScript"
+        ],
+        "link": "https://github.com/krushnatkhawale/portfolio",
+        "liveURL": "https://krushnatkhawale.com"
       },
       {
+        "id": 2,
         "title": "E-Commerce Platform",
-        "description": "Full-stack application with Spring Boot backend, React frontend, PostgreSQL database, Docker containerization",
-        "techStack": ["Spring Boot", "React", "PostgreSQL", "Docker"],
-        "link": "https://github.com/krushnatkhawale"
+        "description": "Full-stack e-commerce application with Spring Boot backend and React frontend",
+        "techStack": [
+          "Spring Boot",
+          "React",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "link": "https://github.com/krushnatkhawale/ecommerce",
+        "liveURL": "https://ecommerce-demo.com"
       },
       {
+        "id": 3,
         "title": "Task Management App",
-        "description": "Real-time collaboration with WebSocket support, Spring Boot backend, MongoDB storage",
-        "techStack": ["Spring Boot", "WebSocket", "MongoDB"],
-        "link": "https://github.com/krushnatkhawale"
+        "description": "Collaborative task management tool with real-time updates using WebSocket",
+        "techStack": [
+          "Spring Boot",
+          "WebSocket",
+          "React",
+          "MongoDB"
+        ],
+        "link": "https://github.com/krushnatkhawale/task-manager",
+        "liveURL": "https://task-app-demo.com"
       }
     ],
     "blogs": [
       {
-        "title": "React Hooks: A Complete Guide",
-        "date": "2024-03-15",
-        "category": "React",
-        "tags": ["React", "JavaScript", "Frontend"]
+        "id": 1,
+        "title": "Spring boot: Integrating OpenAI’s API with SpringAI",
+        "description": "A comprehensive guide to understanding and using SpringAI effectively in your springboot applications",
+        "date": "2024-01-05",
+        "category": "microservices",
+        "link": "https://medium.com/@krushnatkhawale/unleashing-the-power-of-generative-ai-integrating-openais-api-with-springai-7bbc9ebbe138",
+        "tags": [
+          "Spring Boot",
+          "Spring AI",
+          "OpenAI",
+          "Java"
+        ]
       },
       {
-        "title": "Spring Boot Microservices Architecture",
-        "date": "2024-02-20",
+        "id": 2,
+        "title": "OpenTracing using Jaeger with spring boot web application",
+        "description": "Monitoring and troubleshooting microservices-based distributed systems",
+        "date": "2020-07-25",
         "category": "Backend",
-        "tags": ["Spring Boot", "Microservices", "Java"]
+        "link": "https://medium.com/@krushnatkhawale/spring-boot-microservices",
+        "tags": [
+          "Spring Boot",
+          "Microservices",
+          "Architecture"
+        ]
       },
       {
+        "id": 3,
         "title": "Docker for Beginners",
+        "description": "Learn containerization basics with Docker and deployment best practices",
         "date": "2024-01-10",
         "category": "DevOps",
-        "tags": ["Docker", "Containers", "DevOps"]
+        "link": "https://medium.com/@krushnatkhawale/docker-beginners",
+        "tags": [
+          "Docker",
+          "DevOps",
+          "Containers"
+        ]
       }
     ]
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaGithub, FaLinkedinIn, FaTwitter, FaMapMarkerAlt, FaEnvelope, FaLink } from 'react-icons/fa';
 import '../styles/Home.css';
-import experiencesData from '../data/experiences.json';
+import experiencesData from '../data/experience.json';
 import educationData from '../data/education.json';
 
 function Home({ isDarkMode, toggleDarkMode }) {
