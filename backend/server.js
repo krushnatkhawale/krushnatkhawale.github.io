@@ -24,7 +24,7 @@ const RequestLog = mongoose.model('RequestLog', new mongoose.Schema({
   method: String,
   path: String,
   sessionId: String,
-  body: mongoose.Schema.Types.Mixed
+  user_prompt: String
 }));
 
 const app = express();
@@ -194,6 +194,8 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
       response: response,
       remaining: req.remainingQuestions
     });
+
+    console.log(`Response sent to session ${req.body.sessionId}:`, response);
   } catch (error) {
     console.error('Error:', error);
     
