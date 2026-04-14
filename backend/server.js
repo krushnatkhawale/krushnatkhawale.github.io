@@ -4,30 +4,59 @@ const rateLimit = require('express-rate-limit');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
 require('dotenv').config();
+
+/**
+ * Lazy-load MongoDB connection. 
+ * Ensures we only connect when a database operation is actually required.
+ */
+const ensureDbConnection = async () => {
+  if (mongoose.connection.readyState === 1) return;
+  return mongoose.connect(process.env.MONGODB_URI, {
+    serverSelectionTimeoutMS: 5000, // Timeout after 5s if Atlas is unreachable
+  });
+};
+
+// Log Schema & Model
+const RequestLog = mongoose.model('RequestLog', new mongoose.Schema({
+  timestamp: String,
+  method: String,
+  path: String,
+  sessionId: String,
+  body: mongoose.Schema.Types.Mixed
+}));
 
 const app = express();
 
 // Middleware
 app.use(express.json());
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
   const timestamp = new Date().toISOString();
-  const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  const userAgent = req.get('User-Agent');
   const sessionId = req.body?.sessionId || 'no-session';
 
   const logDetails = {
     timestamp,
     method: req.method,
     path: req.path,
-    ip,
     sessionId,
-    userAgent,
     body: req.body
   };
 
-  console.log('Incoming Request:', JSON.stringify(logDetails, null, 2));
+  const logDetailsJson = JSON.stringify(logDetails, null, 2);
+  console.log('Incoming Request:', logDetailsJson);
+  
+  // Save log entry to MongoDB Atlas
+  try {
+    await ensureDbConnection();
+    // We don't 'await' the create call here to avoid delaying the response 
+    // to the user, but the connection is now guaranteed to be active.
+    RequestLog.create(logDetails).catch(err => console.error('Failed to save log to DB:', err));
+  } catch (err) {
+    console.error('Could not connect to MongoDB for logging:', err.message);
+  }
+
   next();
 });
 
@@ -121,6 +150,8 @@ Guidelines:
 9. Add proper line breaks and text formatting(e.g. an empty line between to paragraps) for readability when providing lists or multiple points
 10. If user asks something outside the scope of the portfolio (e.g. personal opinions, unrelated topics), politely decline and steer the conversation back to Krushnat's professional background and expertise.
 11. If user message is about ending the conversation, respond politely and suggest reaching out to Krushnat on his email(give Krushnat's email address). 
+12. If users question addresses you, consider it as a question about Krushnat's portfolio and respond accordingly.  
+13. The last response (5th in this case) should always include a friendly closing statement inviting the user to ask more questions about Krushnat's portfolio or to reach out via email for further inquiries.
 `;
 
 // Chat endpoint

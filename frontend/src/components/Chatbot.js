@@ -7,7 +7,7 @@ function Chatbot({ isDarkMode }) {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "Hi! 👋 I'm a portfolio assistant. Ask me about Krushnat's projects, experience, skills, or blogs!",
+      text: "Hi! 👋 I'm a Krushnat's portfolio assistant. Ask me about Krushnat's projects, experience, skills, or blogs! You can ask 5 questions per 24 hours.",
       sender: 'bot'
     }
   ]);
