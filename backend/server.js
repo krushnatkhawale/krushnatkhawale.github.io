@@ -41,7 +41,7 @@ app.use(async (req, res, next) => {
     method: req.method,
     path: req.path,
     sessionId,
-    body: req.body
+    user_prompt: req.body.message || 'empty-user-prompt'
   };
 
   const logDetailsJson = JSON.stringify(logDetails, null, 2);
