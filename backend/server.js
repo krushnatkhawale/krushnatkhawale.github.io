@@ -4,28 +4,8 @@ const rateLimit = require('express-rate-limit');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 const fs = require('fs');
 const path = require('path');
-const mongoose = require('mongoose');
+const logService = require('./logService');
 require('dotenv').config();
-
-/**
- * Lazy-load MongoDB connection. 
- * Ensures we only connect when a database operation is actually required.
- */
-const ensureDbConnection = async () => {
-  if (mongoose.connection.readyState === 1) return;
-  return mongoose.connect(process.env.MONGODB_URI, {
-    serverSelectionTimeoutMS: 5000, // Timeout after 5s if Atlas is unreachable
-  });
-};
-
-// Log Schema & Model
-const RequestLog = mongoose.model('RequestLog', new mongoose.Schema({
-  timestamp: String,
-  method: String,
-  path: String,
-  sessionId: String,
-  user_prompt: String
-}));
 
 const app = express();
 
@@ -47,14 +27,8 @@ app.use(async (req, res, next) => {
   const logDetailsJson = JSON.stringify(logDetails, null, 2);
   console.log('Incoming Request:', logDetailsJson);
   
-  // Save log entry to MongoDB Atlas
-  try {
-    await ensureDbConnection();
-    // We don't 'await' the create call here to avoid delaying the response 
-    // to the user, but the connection is now guaranteed to be active.
-    RequestLog.create(logDetails).catch(err => console.error('Failed to save log to DB:', err));
-  } catch (err) {
-    console.error('Could not connect to MongoDB for logging:', err.message);
+  if (req.method === 'POST' && logDetails.user_prompt !== 'empty-user-prompt') {
+    logService.createLog(logDetails);
   }
 
   next();
@@ -208,6 +182,17 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     res.status(500).json({
       error: 'Sorry, I encountered an error. Please try again later.'
     });
+  }
+});
+
+// Logs endpoint
+app.get('/api/logs', async (req, res) => {
+  try {
+    const logs = await logService.getAllLogs();
+    res.json(logs);
+  } catch (err) {
+    console.error('Failed to retrieve logs:', err);
+    res.status(500).json({ error: 'Failed to retrieve logs' });
   }
 });
 

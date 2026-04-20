@@ -130,7 +130,7 @@ function Chatbot({ isDarkMode }) {
           <div className="chatbot-messages">
             {messages.map(msg => (
               <div key={msg.id} className={`message ${msg.sender}`}>
-                <div className="message-content">
+                <div className="message-content" style={{ whiteSpace: 'pre-wrap' }}>
                   {msg.text}
                 </div>
               </div>
