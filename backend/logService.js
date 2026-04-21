@@ -15,6 +15,7 @@ const RequestLog = mongoose.model('RequestLog', RequestLogSchema);
  */
 const ensureDbConnection = async () => {
   if (mongoose.connection.readyState === 1) return;
+  println('Connecting to MongoDB...');
   return mongoose.connect(process.env.MONGODB_URI, {
     serverSelectionTimeoutMS: 5000,
   });
