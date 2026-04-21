@@ -34,13 +34,25 @@ app.use(async (req, res, next) => {
   next();
 });
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'https://krushnatkhawale.github.io',
+  process.env.FRONTEND_URL
+].filter(Boolean);
+
 app.use(cors({
-  origin: [
-    'http://localhost:3000',
-    'http://localhost:3001',
-    'https://krushnatkhawale.github.io',
-    process.env.FRONTEND_URL || ''
-  ],
+  origin: (origin, callback) => {
+    // 1. Allow requests with no origin (like Flutter Android/iOS apps, curl, etc.)
+    if (!origin) return callback(null, true);
+
+    // 2. Allow requests from whitelisted web domains (Flutter Web)
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 
@@ -52,7 +64,7 @@ const knowledgeBase = JSON.parse(
 // Session storage (in production, use Redis or database)
 const sessions = new Map();
 
-// Rate limiting per session (5 requests per hour)
+// Rate limiting per session (5 requests per 24 hour)
 const sessionLimiter = (req, res, next) => {
   const sessionId = req.body.sessionId;
   
@@ -93,6 +105,7 @@ const sessionLimiter = (req, res, next) => {
   });
 
   req.remainingQuestions = 5 - session.count;
+  req.currentSession = session;
   next();
 };
 
@@ -109,24 +122,19 @@ Your role is to help visitors learn about Krushnat's:
 - Blog topics and interests
 - Education and background
 
-Here is Krushnat's portfolio information:
-${JSON.stringify(knowledgeBase, null, 2)}
-
 Guidelines:
 1. Be professional but friendly in your tone
 2. Ask clarifying questions if the user's query is unclear
 3. Provide specific examples from the portfolio when appropriate
 4. Suggest related topics that might interest them
-5. If asked about something not in the portfolio, politely mention that and redirect to relevant information
-6. Keep responses concise (2-3 sentences typically, max 5-6 sentences)
-7. Always be accurate with dates, company names, and technical details
-8. Add a touch of personality to make the conversation engaging, but avoid being too casual or using slang
-9. Add proper line breaks and text formatting(e.g. an empty line between to paragraps) for readability when providing lists or multiple points
-10. If user asks something outside the scope of the portfolio (e.g. personal opinions, unrelated topics), politely decline and steer the conversation back to Krushnat's professional background and expertise.
-11. If user message is about ending the conversation, respond politely and suggest reaching out to Krushnat on his email(give Krushnat's email address). 
-12. If users question addresses you, consider it as a question about Krushnat's portfolio and respond accordingly.  
-13. The last response (5th in this case) should always include a friendly closing statement inviting the user to ask more questions about Krushnat's portfolio or to reach out via email for further inquiries.
-`;
+5. Keep responses concise (2-3 sentences typically, max 5-6 sentences)
+6. Always be accurate with dates, company names, and technical details
+7. Add a touch of personality but avoid slang
+8. Use proper line breaks and formatting for readability
+9. If asked about something not in the portfolio, politely redirect
+10. If user wants to end conversation, suggest reaching out via email.
+
+You have access to the full portfolio knowledge. Answer based on it.`;
 
 // Chat endpoint
 app.post('/api/chat', sessionLimiter, async (req, res) => {
@@ -145,25 +153,45 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     // Call Gemini API
     const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
 
+    let historyForGemini = [...session.history];
+
+    // Add system prompt only if this is the first message
+    if (historyForGemini.length === 0) {
+      historyForGemini.push({
+        role: "user",
+        parts: [{ text: SYSTEM_PROMPT + "\n\nHere is the complete knowledge base:\n" + JSON.stringify(knowledgeBase, null, 2) }]
+      });
+      // Optional: Add a model acknowledgment
+      // historyForGemini.push({ role: "model", parts: [{ text: "Understood. I'm ready to answer questions about Krushnat's portfolio." }] });
+    }
+
+    // Add current user message
+    historyForGemini.push({
+      role: "user",
+      parts: [{ text: message }]
+    });
+
     const chat = model.startChat({
-      history: [],
+      history: historyForGemini,
       generationConfig: {
-        maxOutputTokens: 256,
+        maxOutputTokens: 300,
         temperature: 0.7,
       },
     });
 
-    const result = await chat.sendMessage([
-      {
-        text: SYSTEM_PROMPT
-      },
-      {
-        text: `User question: ${message}`
-      }
-    ]);
+    const result = await chat.sendMessage(message);
 
     const response = result.response.text();
 
+    // Save model response to history
+    historyForGemini.push({
+      role: "model",
+      parts: [{ text: responseText }]
+    });
+
+    session.history = historyForGemini;
+
+    // Send response back to client
     res.json({
       response: response,
       remaining: req.remainingQuestions
@@ -171,7 +199,7 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
 
     console.log(`Response sent to session ${req.body.sessionId}:`, response);
   } catch (error) {
-    console.error('Error:', error);
+    console.error('Gemini API Error:', error);
     
     if (error.message?.includes('API key')) {
       return res.status(500).json({

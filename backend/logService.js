@@ -37,6 +37,7 @@ const logService = {
    * Retrieve all request logs, sorted by timestamp descending.
    */
   getAllLogs: async () => {
+    await ensureDbConnection();
     return await RequestLog.find().sort({ timestamp: -1 });
   },
 
@@ -44,6 +45,7 @@ const logService = {
    * Find a specific log by its ID.
    */
   getLogById: async (id) => {
+    await ensureDbConnection();
     return await RequestLog.findById(id);
   },
 
@@ -51,6 +53,7 @@ const logService = {
    * Update an existing log by its ID.
    */
   updateLog: async (id, updateData) => {
+    await ensureDbConnection();
     return await RequestLog.findByIdAndUpdate(id, updateData, { new: true });
   },
 
@@ -58,6 +61,7 @@ const logService = {
    * Delete a log by its ID.
    */
   deleteLog: async (id) => {
+    //TODO: to be add when auth added -> await ensureDbConnection();
     return await RequestLog.findByIdAndDelete(id);
   }
 };
