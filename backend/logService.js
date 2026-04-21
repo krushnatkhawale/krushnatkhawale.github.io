@@ -15,7 +15,7 @@ const RequestLog = mongoose.model('RequestLog', RequestLogSchema);
  */
 const ensureDbConnection = async () => {
   if (mongoose.connection.readyState === 1) return;
-  println('Connecting to MongoDB...');
+  console.log('Connecting to MongoDB...');
   return mongoose.connect(process.env.MONGODB_URI, {
     serverSelectionTimeoutMS: 5000,
   });
@@ -62,7 +62,7 @@ const logService = {
    * Delete a log by its ID.
    */
   deleteLog: async (id) => {
-    //TODO: to be add when auth added -> await ensureDbConnection();
+    await ensureDbConnection();
     return await RequestLog.findByIdAndDelete(id);
   }
 };

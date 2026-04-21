@@ -28,7 +28,9 @@ app.use(async (req, res, next) => {
   console.log('Incoming Request:', logDetailsJson);
   
   if (req.method === 'POST' && logDetails.user_prompt !== 'empty-user-prompt') {
-    logService.createLog(logDetails);
+    logService.createLog(logDetails).catch(err => 
+      console.error('Background logging failed:', err)
+    );
   }
 
   next();
@@ -76,7 +78,7 @@ const sessionLimiter = (req, res, next) => {
     sessions.set(sessionId, {
       count: 0,
       resetTime: Date.now() + 24 * 60 * 60 * 1000, // 24 hour window
-      questions: []
+      history: []
     });
   }
 
@@ -86,7 +88,7 @@ const sessionLimiter = (req, res, next) => {
   // Reset if window has passed
   if (now > session.resetTime) {
     session.count = 0;
-    session.questions = [];
+    session.history = [];
     session.resetTime = now + 24 * 60 * 60 * 1000;
   }
 
@@ -99,10 +101,6 @@ const sessionLimiter = (req, res, next) => {
   }
 
   session.count++;
-  session.questions.push({
-    question: req.body.message,
-    timestamp: new Date().toISOString()
-  });
 
   req.remainingQuestions = 5 - session.count;
   req.currentSession = session;
@@ -136,10 +134,16 @@ Guidelines:
 
 You have access to the full portfolio knowledge. Answer based on it.`;
 
+// Helper to format knowledge base for the system instruction
+const getFullSystemInstruction = () => {
+  return `${SYSTEM_PROMPT}\n\nHere is the complete knowledge base to answer from:\n${JSON.stringify(knowledgeBase, null, 2)}`;
+};
+
 // Chat endpoint
 app.post('/api/chat', sessionLimiter, async (req, res) => {
   try {
     const { message } = req.body;
+    const session = req.currentSession;
 
     if (!message || message.trim().length === 0) {
       return res.status(400).json({ error: 'Message cannot be empty' });
@@ -151,28 +155,13 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     }
 
     // Call Gemini API
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
-
-    let historyForGemini = [...session.history];
-
-    // Add system prompt only if this is the first message
-    if (historyForGemini.length === 0) {
-      historyForGemini.push({
-        role: "user",
-        parts: [{ text: SYSTEM_PROMPT + "\n\nHere is the complete knowledge base:\n" + JSON.stringify(knowledgeBase, null, 2) }]
-      });
-      // Optional: Add a model acknowledgment
-      // historyForGemini.push({ role: "model", parts: [{ text: "Understood. I'm ready to answer questions about Krushnat's portfolio." }] });
-    }
-
-    // Add current user message
-    historyForGemini.push({
-      role: "user",
-      parts: [{ text: message }]
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.5-flash-lite',
+      systemInstruction: getFullSystemInstruction()
     });
 
     const chat = model.startChat({
-      history: historyForGemini,
+      history: session.history,
       generationConfig: {
         maxOutputTokens: 300,
         temperature: 0.7,
@@ -181,23 +170,21 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
 
     const result = await chat.sendMessage(message);
 
-    const response = result.response.text();
+    const responseText = result.response.text();
 
-    // Save model response to history
-    historyForGemini.push({
-      role: "model",
-      parts: [{ text: responseText }]
-    });
-
-    session.history = historyForGemini;
+    // Update session history in the format Gemini expects for the next turn
+    session.history.push(
+      { role: "user", parts: [{ text: message }] },
+      { role: "model", parts: [{ text: responseText }] }
+    );
 
     // Send response back to client
     res.json({
-      response: response,
+      response: responseText,
       remaining: req.remainingQuestions
     });
 
-    console.log(`Response sent to session ${req.body.sessionId}:`, response);
+    console.log(`Response sent to session ${req.body.sessionId}:`, responseText);
   } catch (error) {
     console.error('Gemini API Error:', error);
     
