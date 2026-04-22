@@ -189,13 +189,14 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     const result = await chat.sendMessage(message);
 
     const responseText = result.response.text();
+    console.log('Gemini history3:', JSON.stringify(geminiHistory, null, 2));
 
     // Save model response to session history
     geminiHistory.push({
       role: "model",
       parts: [{ text: responseText }]
     });
-    console.log('Gemini history3:', JSON.stringify(geminiHistory, null, 2));
+    console.log('Gemini history4:', JSON.stringify(geminiHistory, null, 2));
 
     session.history = geminiHistory;
 
