@@ -163,28 +163,21 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
 
     // Inject system prompt + knowledge ONLY on the first message of the session
     if (geminiHistory.length === 0) {
-      geminiHistory.push({
-        role: "user",
-        parts: [{ text: getFullSystemInstruction() }]
-      });
-
-      // Add chatbots default greeting message as model's message
-    geminiHistory.push({
-      role: "model",
-      parts: [{ text: "Hi! 👋 I'm a portfolio assistant. Ask me about Krushnat's projects, experience, skills, or blogs!" }]
-    });
+      geminiHistory.push(
+        {
+          role: "user",
+          parts: [{ text: getFullSystemInstruction() }]
+        },
+        {
+          role: "model",
+          parts: [{ text: "Hi! 👋 I'm a portfolio assistant. Ask me about Krushnat's projects, experience, skills, or blogs!" }]
+        }
+      );
     }
 
     
     console.log('Gemini history2:', JSON.stringify(geminiHistory, null, 2));
 
-    // Add current user message
-    geminiHistory.push({
-      role: "user",
-      parts: [{ text: message }]
-    });
-
-    console.log('Gemini history3:', JSON.stringify(geminiHistory, null, 2));
     const chat = model.startChat({
       history: geminiHistory,
       generationConfig: {
@@ -202,7 +195,7 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
       role: "model",
       parts: [{ text: responseText }]
     });
-    console.log('Gemini history4:', JSON.stringify(geminiHistory, null, 2));
+    console.log('Gemini history3:', JSON.stringify(geminiHistory, null, 2));
 
     session.history = geminiHistory;
 
