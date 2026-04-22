@@ -24,7 +24,7 @@ app.use(async (req, res, next) => {
     user_prompt: req.body.message || 'empty-user-prompt'
   };
 
-  const logDetailsJson = JSON.stringify(logDetails, null, 2);
+  const logDetailsJson = JSON.stringify(logDetails);
   console.log('Incoming Request:', logDetailsJson);
   
   if (req.method === 'POST' && logDetails.user_prompt !== 'empty-user-prompt') {
@@ -136,13 +136,16 @@ You have access to the full portfolio knowledge. Answer based on it.`;
 
 // Helper to format knowledge base for the system instruction
 const getFullSystemInstruction = () => {
-  return `${SYSTEM_PROMPT}\n\nHere is the complete knowledge base to answer from:\n${JSON.stringify(knowledgeBase, null, 2)}`;
+  return 
+  `
+    ${SYSTEM_PROMPT}\n\nHere is the complete knowledge base to answer from:\n${JSON.stringify(knowledgeBase, null, 2)}
+  `;
 };
 
 // Chat endpoint
 app.post('/api/chat', sessionLimiter, async (req, res) => {
   try {
-    const { message } = req.body;
+    const { message, sessionId } = req.body;
     const session = req.currentSession;
 
     if (!message || message.trim().length === 0) {
@@ -155,13 +158,35 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     }
 
     // Call Gemini API
-    const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.5-flash-lite',
-      systemInstruction: getFullSystemInstruction()
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash-lite' });
+
+    // Build full history for this request
+    let geminiHistory = [...session.history];
+
+    // Inject system prompt + knowledge ONLY on the first message of the session
+    if (geminiHistory.length === 0) {
+      geminiHistory.push({
+        role: "user",
+        parts: [{ text: getFullSystemInstruction() }]
+      });
+
+      // Add chatbots default greeting message as model's message
+    geminiHistory.push({
+      role: "model",
+      parts: [{ text: "Hi! 👋 I'm a portfolio assistant. Ask me about Krushnat's projects, experience, skills, or blogs!" }]
+    });
+    }
+
+    
+
+    // Add current user message
+    geminiHistory.push({
+      role: "user",
+      parts: [{ text: message }]
     });
 
     const chat = model.startChat({
-      history: session.history,
+      history: geminiHistory,
       generationConfig: {
         maxOutputTokens: 300,
         temperature: 0.7,
@@ -172,11 +197,13 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
 
     const responseText = result.response.text();
 
-    // Update session history in the format Gemini expects for the next turn
-    session.history.push(
-      { role: "user", parts: [{ text: message }] },
-      { role: "model", parts: [{ text: responseText }] }
-    );
+    // Save model response to session history
+    geminiHistory.push({
+      role: "model",
+      parts: [{ text: responseText }]
+    });
+
+    session.history = geminiHistory;
 
     // Send response back to client
     res.json({
