@@ -48,6 +48,8 @@ app.use(cors({
     // 1. Allow requests with no origin (like Flutter Android/iOS apps, curl, etc.)
     if (!origin) return callback(null, true);
 
+    console.log('Request origin:', origin);
+
     // 2. Allow requests from whitelisted web domains (Flutter Web)
     if (allowedOrigins.includes(origin)) {
       callback(null, true);
@@ -159,7 +161,6 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
 
     // Build full history for this request
     let geminiHistory = [...session.history];
-    console.log('Gemini history1:', JSON.stringify(geminiHistory, null, 2));
 
     // Inject system prompt + knowledge ONLY on the first message of the session
     if (geminiHistory.length === 0) {
@@ -174,10 +175,7 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
         }
       );
     }
-
     
-    console.log('Gemini history2:', JSON.stringify(geminiHistory, null, 2));
-
     const chat = model.startChat({
       history: geminiHistory,
       generationConfig: {
@@ -189,7 +187,6 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
     const result = await chat.sendMessage(message);
 
     const responseText = result.response.text();
-    console.log('Gemini history3:', JSON.stringify(geminiHistory, null, 2));
 
     session.history = geminiHistory;
 
