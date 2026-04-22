@@ -136,10 +136,7 @@ You have access to the full portfolio knowledge. Answer based on it.`;
 
 // Helper to format knowledge base for the system instruction
 const getFullSystemInstruction = () => {
-  return 
-  `
-    ${SYSTEM_PROMPT}\n\nHere is the complete knowledge base to answer from:\n${JSON.stringify(knowledgeBase, null, 2)}
-  `;
+  return `${SYSTEM_PROMPT}\n\nHere is the complete knowledge base to answer from:\n${JSON.stringify(knowledgeBase, null, 2)}`;
 };
 
 // Chat endpoint
