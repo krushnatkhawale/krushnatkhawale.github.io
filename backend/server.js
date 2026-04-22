@@ -51,7 +51,7 @@ app.use(cors({
     console.log('Request origin:', origin);
 
     // 2. Allow requests from whitelisted web domains (Flutter Web)
-    if (allowedOrigins.includes(origin)) {
+    if (allowedOrigins.includes(origin) || origin.includes('localhost') ) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
