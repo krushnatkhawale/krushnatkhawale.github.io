@@ -220,6 +220,17 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
   }
 });
 
+// Error logs endpoint
+app.get('/api/error-logs', async (req, res) => {
+  try {
+    const logs = await logService.getAllErrorLogs();
+    res.json(logs);
+  } catch (err) {
+    console.error('Failed to retrieve error logs:', err);
+    res.status(500).json({ error: 'Failed to retrieve error logs' });
+  }
+});
+
 // Logs endpoint
 app.get('/api/logs', async (req, res) => {
   try {

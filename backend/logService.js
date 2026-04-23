@@ -62,6 +62,14 @@ const logService = {
   },
 
   /**
+   * Retrieve all error logs, sorted by timestamp descending.
+   */
+  getAllErrorLogs: async () => {
+    await ensureDbConnection();
+    return await ErrorLog.find().sort({ timestamp: -1 });
+  },
+
+  /**
    * Retrieve all request logs, sorted by timestamp descending.
    */
   getAllLogs: async () => {
