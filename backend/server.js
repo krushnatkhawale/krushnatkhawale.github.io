@@ -200,6 +200,14 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
   } catch (error) {
     console.error('Gemini API Error:', error);
     
+    logService.createErrorLog({
+      timestamp: new Date().toISOString(),
+      apiname: 'backend',
+      where: '/api/chat',
+      message: error.message,
+      stacktrace: error.stack
+    });
+
     if (error.message?.includes('API key')) {
       return res.status(500).json({
         error: 'API configuration error. Please contact the site owner.'

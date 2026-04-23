@@ -10,6 +10,16 @@ const RequestLogSchema = new mongoose.Schema({
 
 const RequestLog = mongoose.model('RequestLog', RequestLogSchema);
 
+const ErrorLogSchema = new mongoose.Schema({
+  timestamp: String,
+  apiname: String,
+  where: String,
+  message: String,
+  stacktrace: String
+});
+
+const ErrorLog = mongoose.model('ErrorLog', ErrorLogSchema);
+
 /**
  * Lazy-load MongoDB connection. 
  */
@@ -31,6 +41,23 @@ const logService = {
       return await RequestLog.create(logData);
     } catch (err) {
       console.error('Failed to save log to DB:', err);
+    }
+  },
+
+  /**
+   * Log an error if the database connection is open.
+   */
+  createErrorLog: async (errorData) => {
+    // Check if connection is open (1 = connected)
+    if (mongoose.connection.readyState !== 1) {
+      console.warn('Database not connected. Skipping error log to DB.');
+      return;
+    }
+
+    try {
+      return await ErrorLog.create(errorData);
+    } catch (err) {
+      console.error('Failed to save error log to DB:', err);
     }
   },
 
