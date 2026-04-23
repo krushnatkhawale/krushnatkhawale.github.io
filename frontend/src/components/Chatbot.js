@@ -108,7 +108,9 @@ function Chatbot({ isDarkMode }) {
         onClick={() => setIsOpen(!isOpen)}
         title="Chat with portfolio assistant"
       >
-        {isOpen ? <FaTimes /> : <FaComments />}
+        <span>Chat</span>
+        {/* Add a small margin to separate text and icon */}
+        {isOpen ? <FaTimes style={{ marginLeft: '5px' }} /> : <FaComments style={{ marginLeft: '5px' }} />}
       </button>
 
       {/* Chat Window */}
