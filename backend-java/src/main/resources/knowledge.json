@@ -1,0 +1,170 @@
+{
+  "portfolio": {
+    "name": "Krushnat Khavale",
+    "title": "Java Backend Developer | TDD Enthusiast | Clean Coder",
+    "location": "Pune, India",
+    "email": "krushnatkhawale@gmail.com",
+    "about": "I'm a passionate Java developer with a keen interest in building modern server-side applications that are both performant and scalable. I enjoy solving complex problems and creating elegant solutions. When I'm not coding, I explore new technologies and use keyboards for music production.",
+    "social": {
+      "github": "https://github.com/krushnatkhawale",
+      "linkedin": "https://www.linkedin.com/in/krushnatkhavale/",
+      "twitter": "https://x.com/krushnatkhavale"
+    },
+    "skills": {
+      "backend": [
+        "Microservices (SpringBoot)",
+        "DATA-ETL (Spring Batch, Spring Integration)",
+        "Messaging Apps (RabbitMQ, Kafka)",
+        "Build Tools (Gradle)",
+        "Azure",
+        "Batch Processing"
+      ],
+      "frontend": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "React"
+      ],
+      "tools": [
+        "Git",
+        "GitHub",
+        "Docker",
+        "Linux",
+        "Jenkins"
+      ],
+      "databases": [
+        "PostgreSQL",
+        "Gemfire"
+      ]
+    },
+    "experience": [
+      {
+        "id": 1,
+        "title": "Associate Director",
+        "company": "UBS",
+        "time": "2024 - Present",
+        "logo": "/images/UBS_Logo.svg",
+        "description": "Developed and maintained sql based batch processing applications, azure based deployment and monitoring",
+        "link": "https://www.ubs.com/global/en/legal/country/india.html"
+      },
+      {
+        "id": 2,
+        "title": "Senior Consultant",
+        "company": "Capgemini",
+        "time": "2019 - 2021",
+        "logo": "/images/Capgemini_Logo.png",
+        "description": "Migrated springboot based microservices from PCF to OpenShift, created specialized solutions for migrating data from Gemfire to Postgres.",
+        "link": "https://www.capgemini.com"
+      },
+      {
+        "id": 3,
+        "title": "Consultant",
+        "company": "Capgemini",
+        "time": "2017 - 2019",
+        "logo": "/images/Capgemini_Logo.png",
+        "description": "Built backend apps using spring batch, springboot, messaging apps using RabbitMQ, created and maintained CI/CD pipelines using Jenkins and Ansible for PCF, VMs.",
+        "link": "https://www.capgemini.com"
+      }
+    ],
+    "education": [
+      {
+        "id": 1,
+        "title": "Master of Computer Applications",
+        "field": "Pune University",
+        "logo": "/images/Pune-University-Logo.png",
+        "description": "2010 - 2014",
+        "link": "https://example.edu"
+      },
+      {
+        "id": 2,
+        "title": "Bachelor of Computer Science",
+        "field": "Shivaji University, Kolhapur",
+        "logo": "/images/Shivaji-University-Logo.jpeg",
+        "description": "2007 - 2010",
+        "link": "https://example.com"
+      }
+    ],
+    "projects": [
+      {
+        "id": 1,
+        "title": "Portfolio Website",
+        "description": "Modern portfolio website built with React and showcasing projects and experience",
+        "techStack": [
+          "React",
+          "CSS3",
+          "JavaScript"
+        ],
+        "link": "https://github.com/krushnatkhawale/portfolio",
+        "liveURL": "https://krushnatkhawale.com"
+      },
+      {
+        "id": 2,
+        "title": "E-Commerce Platform",
+        "description": "Full-stack e-commerce application with Spring Boot backend and React frontend",
+        "techStack": [
+          "Spring Boot",
+          "React",
+          "PostgreSQL",
+          "Docker"
+        ],
+        "link": "https://github.com/krushnatkhawale/ecommerce",
+        "liveURL": "https://ecommerce-demo.com"
+      },
+      {
+        "id": 3,
+        "title": "Task Management App",
+        "description": "Collaborative task management tool with real-time updates using WebSocket",
+        "techStack": [
+          "Spring Boot",
+          "WebSocket",
+          "React",
+          "MongoDB"
+        ],
+        "link": "https://github.com/krushnatkhawale/task-manager",
+        "liveURL": "https://task-app-demo.com"
+      }
+    ],
+    "blogs": [
+      {
+        "id": 1,
+        "title": "Spring boot: Integrating OpenAI’s API with SpringAI",
+        "description": "A comprehensive guide to understanding and using SpringAI effectively in your springboot applications",
+        "date": "2024-01-05",
+        "category": "microservices",
+        "link": "https://medium.com/@krushnatkhawale/unleashing-the-power-of-generative-ai-integrating-openais-api-with-springai-7bbc9ebbe138",
+        "tags": [
+          "Spring Boot",
+          "Spring AI",
+          "OpenAI",
+          "Java"
+        ]
+      },
+      {
+        "id": 2,
+        "title": "OpenTracing using Jaeger with spring boot web application",
+        "description": "Monitoring and troubleshooting microservices-based distributed systems",
+        "date": "2020-07-25",
+        "category": "Backend",
+        "link": "https://medium.com/@krushnatkhawale/spring-boot-microservices",
+        "tags": [
+          "Spring Boot",
+          "Microservices",
+          "Architecture"
+        ]
+      },
+      {
+        "id": 3,
+        "title": "Docker for Beginners",
+        "description": "Learn containerization basics with Docker and deployment best practices",
+        "date": "2024-01-10",
+        "category": "DevOps",
+        "link": "https://medium.com/@krushnatkhawale/docker-beginners",
+        "tags": [
+          "Docker",
+          "DevOps",
+          "Containers"
+        ]
+      }
+    ]
+  }
+}

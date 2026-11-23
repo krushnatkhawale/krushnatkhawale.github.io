@@ -1,0 +1,42 @@
+#!/bin/bash
+# Gradle wrapper script for macOS/Linux
+
+set -e
+
+APP_NAME="Gradle"
+APP_BASE_NAME=$(basename "$0")
+GRADLE_VERSION="8.7"
+
+# Find the Java executable
+if [ ! -z "$JAVA_HOME" ]; then
+    JAVACMD="$JAVA_HOME/bin/java"
+else
+    JAVACMD="java"
+fi
+
+# Determine script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+PROJECT_DIR="$SCRIPT_DIR"
+
+# Download Gradle if not present
+GRADLE_USER_HOME="${GRADLE_USER_HOME:-.gradle}"
+GRADLE_ZIP_PATH="$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all"
+
+if [ ! -d "$GRADLE_ZIP_PATH" ] || [ ! -f "$GRADLE_ZIP_PATH/gradle-$GRADLE_VERSION/bin/gradle" ]; then
+    echo "Downloading Gradle $GRADLE_VERSION..."
+    mkdir -p "$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all"
+    
+    # Download (simplified for this template; in practice, use gradle-wrapper.jar)
+    curl -L "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-all.zip" \
+        -o "$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all.zip" 2>/dev/null || {
+        echo "Failed to download Gradle. Please install Gradle manually."
+        exit 1
+    }
+    
+    unzip -q "$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all.zip" \
+        -d "$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all/" || true
+fi
+
+# Run Gradle
+GRADLE_BIN="$GRADLE_USER_HOME/wrapper/dists/gradle-$GRADLE_VERSION-all/gradle-$GRADLE_VERSION/bin/gradle"
+exec "$GRADLE_BIN" "$@"
