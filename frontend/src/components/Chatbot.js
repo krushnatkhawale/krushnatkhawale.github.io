@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaTimes, FaComments } from 'react-icons/fa';
+import ReactGA from 'react-ga4';
 import '../styles/Chatbot.css';
 
 function Chatbot({ isDarkMode }) {
@@ -16,6 +17,7 @@ function Chatbot({ isDarkMode }) {
   const [questionsRemaining, setQuestionsRemaining] = useState(5);
   const [sessionId, setSessionId] = useState(null);
   const messagesEndRef = useRef(null);
+  const isFirstRender = useRef(true);
 
   // Initialize session ID
   useEffect(() => {
@@ -27,13 +29,60 @@ function Chatbot({ isDarkMode }) {
     setSessionId(id);
   }, []);
 
+  // Track chat window open/close and virtual pageview
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    if (isOpen) {
+      // Custom event for opening chat
+      ReactGA.event({
+        category: 'Chatbot',
+        action: 'chat_opened',
+        label: 'Portfolio Assistant'
+      });
+
+      // Virtual pageview for Chat Window
+      ReactGA.send({
+        hitType: 'pageview',
+        page: '/#chat-window',
+        title: 'Chat Window - Portfolio Assistant'
+      });
+    } else {
+      // Custom event for closing chat
+      ReactGA.event({
+        category: 'Chatbot',
+        action: 'chat_closed',
+        label: 'Portfolio Assistant'
+      });
+    }
+  }, [isOpen]);
+
   // Scroll to bottom of messages
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
   const handleSendMessage = async () => {
-    if (!inputValue.trim() || isLoading || questionsRemaining <= 0) return;
+    if (questionsRemaining <= 0) {
+      ReactGA.event({
+        category: 'Chatbot',
+        action: 'question_limit_reached'
+      });
+      return;
+    }
+
+    if (!inputValue.trim() || isLoading) return;
+
+    // Track user message sent (without logging raw text to protect privacy)
+    ReactGA.event({
+      category: 'Chatbot',
+      action: 'message_sent',
+      label: 'User Query',
+      value: questionsRemaining - 1
+    });
 
     // Add user message
     const userMessage = {
@@ -65,6 +114,11 @@ function Chatbot({ isDarkMode }) {
       const data = await response.json();
 
       if (response.ok) {
+        ReactGA.event({
+          category: 'Chatbot',
+          action: 'response_received'
+        });
+
         const botMessage = {
           id: messages.length + 2,
           text: data.response,
@@ -73,6 +127,12 @@ function Chatbot({ isDarkMode }) {
         setMessages(prev => [...prev, botMessage]);
       } else {
         console.error('Error from backend:', data, data.error);
+        ReactGA.event({
+          category: 'Chatbot',
+          action: 'error_occurred',
+          label: data.error || 'Backend Error'
+        });
+
         const errorMessage = {
           id: messages.length + 2,
           text: data.error || 'Sorry, I encountered an error. Please try again.',
@@ -82,6 +142,11 @@ function Chatbot({ isDarkMode }) {
       }
     } catch (error) {
       console.error('Error:', error);
+      ReactGA.event({
+        category: 'Chatbot',
+        action: 'connection_error'
+      });
+
       const errorMessage = {
         id: messages.length + 2,
         text: 'Sorry, I\'m having trouble connecting. Please try again later.',

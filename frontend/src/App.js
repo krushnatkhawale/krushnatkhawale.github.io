@@ -18,13 +18,33 @@ import PageNotFound from './components/PageNotFound';
 // Replace 'G-XXXXXXXXXX' with your actual Google Analytics Measurement ID
 const MEASUREMENT_ID = 'G-5BJKLL1EXD';
 ReactGA.initialize(MEASUREMENT_ID);
+// Route titles for analytics and browser tab
+const ROUTE_TITLES = {
+  '/': 'Krushnat Khavale | Portfolio',
+  '/projects': 'Projects | Krushnat Khavale',
+  '/blogs': 'Blogs | Krushnat Khavale',
+  '/contact': 'Contact | Krushnat Khavale',
+  '/about': 'About | Krushnat Khavale',
+};
+
 // Component to track page views
 function AppContent({ isDarkMode, toggleDarkMode }) {
   const location = useLocation();
 
   useEffect(() => {
-    // Track page view
-    ReactGA.send({ hitType: 'pageview', page: location.pathname });
+    // Dynamically update document title based on route
+    if (ROUTE_TITLES[location.pathname]) {
+      document.title = ROUTE_TITLES[location.pathname];
+    }
+
+    const fullPath = location.pathname + location.search + location.hash;
+
+    // Track page view in Google Analytics
+    ReactGA.send({
+      hitType: 'pageview',
+      page: fullPath,
+      title: document.title
+    });
   }, [location]);
 
   return (

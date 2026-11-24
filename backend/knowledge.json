@@ -153,16 +153,20 @@
         ]
       },
       {
-        "id": 3,
-        "title": "Docker for Beginners",
-        "description": "Learn containerization basics with Docker and deployment best practices",
-        "date": "2024-01-10",
-        "category": "DevOps",
-        "link": "https://medium.com/@krushnatkhawale/docker-beginners",
+        "id": "3",
+        "title": "Blogify: A Blog Generator for Java-Based Applications",
+        "description": "How we eliminated runtime dependencies and documentation drift by compiling story-first technical blogs directly from code and markdown.",
+        "date": "2026-11-21",
+        "category": "Developer Tools",
+        "link": "https://krushnatkhawale.github.io/blogify/",
         "tags": [
-          "Docker",
-          "DevOps",
-          "Containers"
+          "java",
+          "blog-automation",
+          "gradle",
+          "static-site",
+          "gh-pages",
+          "documentation",
+          "open-source"
         ]
       }
     ]
