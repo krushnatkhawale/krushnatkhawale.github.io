@@ -43,6 +43,12 @@ const allowedOrigins = [
   process.env.FRONTEND_URL
 ].filter(Boolean);
 
+const isOriginAllowed = (origin) => {
+  if (allowedOrigins.includes(origin)) return true;
+  // Strict regex matching localhost or 127.0.0.1 on any port (prevents localhost.attacker.com)
+  return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+};
+
 app.use(cors({
   origin: (origin, callback) => {
     // 1. Allow requests with no origin (like Flutter Android/iOS apps, curl, etc.)
@@ -50,8 +56,8 @@ app.use(cors({
 
     console.log('Request origin:', origin);
 
-    // 2. Allow requests from whitelisted web domains (Flutter Web)
-    if (allowedOrigins.includes(origin) || origin.includes('localhost') ) {
+    // 2. Allow requests from whitelisted web domains
+    if (isOriginAllowed(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -65,8 +71,19 @@ const knowledgeBase = JSON.parse(
   fs.readFileSync(path.join(__dirname, 'knowledge.json'), 'utf8')
 );
 
-// Session storage (in production, use Redis or database)
+// Session storage with memory boundary & periodic cleanup
 const sessions = new Map();
+const MAX_SESSIONS = 5000;
+
+// Periodic cleanup every hour to prune expired sessions and prevent memory leak
+setInterval(() => {
+  const now = Date.now();
+  for (const [id, session] of sessions.entries()) {
+    if (now > session.resetTime) {
+      sessions.delete(id);
+    }
+  }
+}, 60 * 60 * 1000).unref();
 
 // Rate limiting per session (5 requests per 24 hour)
 const sessionLimiter = (req, res, next) => {
@@ -77,6 +94,12 @@ const sessionLimiter = (req, res, next) => {
   }
 
   if (!sessions.has(sessionId)) {
+    // If cache reaches limit, purge oldest entry to prevent OOM
+    if (sessions.size >= MAX_SESSIONS) {
+      const oldestKey = sessions.keys().next().value;
+      if (oldestKey) sessions.delete(oldestKey);
+    }
+
     sessions.set(sessionId, {
       count: 0,
       resetTime: Date.now() + 24 * 60 * 60 * 1000, // 24 hour window
@@ -220,8 +243,24 @@ app.post('/api/chat', sessionLimiter, async (req, res) => {
   }
 });
 
-// Error logs endpoint
-app.get('/api/error-logs', async (req, res) => {
+// Admin authentication middleware to protect sensitive log endpoints
+const requireAdminAuth = (req, res, next) => {
+  const adminKey = process.env.ADMIN_KEY;
+  const providedKey = req.headers['x-admin-key'] || (req.headers['authorization']?.replace(/^Bearer\s+/i, ''));
+
+  if (!adminKey) {
+    return res.status(403).json({ error: 'Admin access not configured on server' });
+  }
+
+  if (!providedKey || providedKey !== adminKey) {
+    return res.status(401).json({ error: 'Unauthorized: Invalid or missing admin credentials' });
+  }
+
+  next();
+};
+
+// Error logs endpoint (protected)
+app.get('/api/error-logs', requireAdminAuth, async (req, res) => {
   try {
     const logs = await logService.getAllErrorLogs();
     res.json(logs);
@@ -231,8 +270,8 @@ app.get('/api/error-logs', async (req, res) => {
   }
 });
 
-// Logs endpoint
-app.get('/api/logs', async (req, res) => {
+// Logs endpoint (protected)
+app.get('/api/logs', requireAdminAuth, async (req, res) => {
   try {
     const logs = await logService.getAllLogs();
     res.json(logs);
