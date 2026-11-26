@@ -18,7 +18,7 @@
     "tags": ["Spring Boot", "Microservices", "Architecture"]
   },
   {
-    "id": "blogify",
+    "id": "3",
     "title": "Blogify: A Blog Generator for Java-Based Applications",
     "description": "How we eliminated runtime dependencies and documentation drift by compiling story-first technical blogs directly from code and markdown.",
     "date": "2026-11-21",
@@ -33,5 +33,14 @@
       "documentation",
       "open-source"
     ]
+  },
+  {
+    "id": "4",
+    "title": "Automating File Ingestion and Lifecycle Management with Spring Integration and Spring Batch",
+    "description": "How Spring Integration complements Spring Batch in the adapter module by managing signal-based file polling, pre-execution validation, JobLaunchingGateway triggers, and post-batch archiving.",
+    "date": "2026-11-27",
+    "category": "Spring Integration",
+    "link": "https://krushnatkhawale.github.io/blogify/adapter/0.1.0/",
+    "tags": ["Spring Integration", "Spring Batch", "File Processing", "Enterprise Integration Patterns", "Java"]
   }
 ]
